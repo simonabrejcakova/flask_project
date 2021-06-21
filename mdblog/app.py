@@ -15,6 +15,7 @@ from wtforms.validators import InputRequired
 
 from .models import db
 from .models import Article
+
 import os
 
 
@@ -24,7 +25,6 @@ flask_app.config.from_pyfile("/vagrant/configs/default.py")
 
 if "MDBLOG_CONFIG" in os.environ:
     flask_app.config.from_envvar("MDBLOG_CONFIG")
-
 
 db.init_app(flask_app)
 
@@ -77,8 +77,8 @@ def add_article():
     add_form = ArticleForm(request.form)
     if add_form.validate():
         new_article = Article(
-            title = add_form.title.data,
-            content = add_form.content.data)
+                title = add_form.title.data,
+                content = add_form.content.data)
         db.session.add(new_article)
         db.session.commit()
         flash("Article was saved", "alert-success")
@@ -92,9 +92,6 @@ def add_article():
 def view_article(art_id):
     article = Article.query.filter_by(id=art_id).first()
     if article:
-        form = ArticleForm()
-        form.title.data = article.title
-        form.content.data = article.content
         return render_template("article.jinja", article=article)
     return render_template("article_not_found.jinja", art_id=art_id)
 
@@ -105,8 +102,8 @@ def view_article_editor(art_id):
     article = Article.query.filter_by(id=art_id).first()
     if article:
         form = ArticleForm()
-        form.title.data = article["title"]
-        form.content.data = article["content"]
+        form.title.data = article.title
+        form.content.data = article.content
         return render_template("article_editor.jinja", form=form, article=article)
     return render_template("article_not_found.jinja", art_id=art_id)
 
@@ -119,9 +116,9 @@ def edit_article(art_id):
     if article:
         edit_form = ArticleForm(request.form)
         if edit_form.validate():
-            article.title = edit.form.title.data
-            article.content = edit.form.content.data
-            db.session.add(Article)
+            article.title = edit_form.title.data
+            article.content = edit_form.content.data
+            db.session.add(article)
             db.session.commit()
             flash("Edit saved", "alert-success")
             return redirect(url_for("view_article", art_id=art_id))
