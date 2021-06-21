@@ -1,6 +1,6 @@
-import flask
 from mdblog.app import flask_app
 from mdblog.app import init_db
+
 import sys
 
 def start():
@@ -10,6 +10,7 @@ def start():
 
 def init():
     init_db(flask_app)
+
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
