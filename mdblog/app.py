@@ -1,13 +1,13 @@
 from flask import Flask
 from flask import render_template
 
-from.models import db
+from .models import db
 from .mod_main import main
 from .mod_blog import blog
 from .mod_admin import admin
 
-import os
 
+import os
 
 flask_app = Flask(__name__)
 flask_app.config.from_pyfile("/vagrant/configs/default.py")
