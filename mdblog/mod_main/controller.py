@@ -6,7 +6,7 @@ main = Blueprint("main", __name__)
 
 @main.route("/")
 def view_welcome_page():
-    return render_template("mod_main/home_page.jinja")
+    return render_template("mod_main/welcome_page.jinja")
 
 @main.route("/about/")
 def view_about():
