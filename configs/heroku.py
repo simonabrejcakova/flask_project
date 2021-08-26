@@ -1,6 +1,6 @@
 import os
 
-SECRET_KEY = b'""\x9ac\xbc\x82\xcb\xd0\xa7\xe8Y\xecsV/\x93F\xeax\x99\xa3\x7f\x03\t'
+SECRET_KEY = b'E\x9e*0D\xad\x1fX\x85i\x8a\xe5I\xd3\xa0Xhm\x14\xa7\xf7=\x87}'
 DEBUG=False
 SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 SQLALCHEMY_TRACK_MODIFICATIONS = False
