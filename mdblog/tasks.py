@@ -9,8 +9,6 @@ import smtplib
 
 from flask import current_app
 
-from flask import current_app
-
 logger = get_task_logger(__name__)
 
 @celery.task
@@ -21,7 +19,7 @@ def notify_newsletter(url):
         logger.info("sending email to {}".format(subscriber.email))
         username = current_app.config.get("EMAIL_USERNAME")
         password = current_app.config.get("EMAIL_PASSWORD")
-        send_email(username, password, 
+        send_email(username, password,
                 subscriber.email, url)
 
 def send_email(user, passwd, to_email, url):
