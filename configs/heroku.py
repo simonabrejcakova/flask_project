@@ -1,3 +1,4 @@
+
 import os
 
 SECRET_KEY = b'E\x9e*0D\xad\x1fX\x85i\x8a\xe5I\xd3\xa0Xhm\x14\xa7\xf7=\x87}'
@@ -5,8 +6,8 @@ DEBUG=False
 SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-EMAIL_USERNAME=os.environ.get("MDBLOG_EMAIL_USERNAME1", None)
-EMAIL_PASSWORD=os.environ.get("MDBLOG_EMAIL_PASSWORD1", None)
+EMAIL_USERNAME=os.environ.get("MDBLOG_EMAIL_USERNAME", None)
+EMAIL_PASSWORD=os.environ.get("MDBLOG_EMAIL_PASSWORD", None)
 
 ## CELERY CONFIG
 BROKER_URL = os.environ.get("CLOUDAMQP_URL")
