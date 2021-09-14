@@ -1,6 +1,6 @@
 alembic>=0.9.9
 backcall>=0.1.0
-click==7.9
+click==7.1.2
 decorator>=4.2.1
 Flask>=0.12.2
 Flask-SQLAlchemy>=2.3.2
