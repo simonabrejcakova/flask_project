@@ -28,7 +28,7 @@ wcwidth>=0.1.7
 Werkzeug>=0.14.1
 WTForms>=2.1
 uWSGI>=2.0.17
-celery>=4.1.1
+celery==4.1.1
 psycopg2>=2.7.
 
 amqp==5.0.6
