@@ -26,3 +26,10 @@ class User(db.Model):
 class Newsletter(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String, unique=True)
+
+
+class Manual(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String)
+    content = db.Column(db.String)
+    html_render = db.Column(db.String)

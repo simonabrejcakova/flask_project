@@ -32,6 +32,29 @@
 </table>
 
 
+
+
+<h2> MANUALS </h2>
+<a href={{ url_for(".view_add_manual") }} role="button" class="btn btn-primary">Add new manual</a>
+{# CREATE TABLE MANUAL#}
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    {# TABLE LOOP #}
+    {% for manual in manuals %}
+        <tr>
+            <th> {{ manual.id }}</td>
+            <td> <a href={{ url_for(".view_manual_editor", man_id=manual.id) }}> {{ manual.title }} </a> </td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 {# PAGINATION #}
 <ul class="pagination justify-content-center mt-3">
 

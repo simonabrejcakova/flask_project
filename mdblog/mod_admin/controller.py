@@ -9,8 +9,10 @@ from flask import flash
 from mdblog.models import db
 from mdblog.models import Article
 from mdblog.models import User
+from mdblog.models import Manual
 
 from .forms import ArticleForm
+from .forms import ManualForm
 from .forms import ChangePasswordForm
 from .forms import LoginForm
 
@@ -148,3 +150,66 @@ def logout_user():
     session.pop("logged")
     flash("Logout successful", "alert-success")
     return redirect(url_for("main.view_welcome_page"))
+
+
+
+
+
+
+@admin.route("/manuals/new/", methods=["GET"])
+@login_required
+def view_add_manual():
+    form = ManualForm()
+    return render_template("mod_admin/manual_editor.jinja", form=form)
+
+@admin.route("/manuals/", methods=["POST"])
+@login_required
+def add_manual():
+    add_form = ManualForm(request.form)
+    if add_form.validate():
+        new_manual = Manual(
+                title = add_form.title.data,
+                content = add_form.content.data,
+                html_render = add_form.html_render.data)
+        db.session.add(new_manual)
+        db.session.commit()
+        flash("Manual was saved", "alert-success")
+
+
+        return redirect(url_for("blog.view_manuals"))
+    else:
+        for error in add_form.errors:
+            flash("{} is required".format(error), "alert-danger")
+        return render_template("mod_admin/manual_editor.jinja", form=add_form)
+
+
+@admin.route("/manuals/<int:man_id>/edit/", methods=["GET"])
+@login_required
+def view_manual_editor(man_id):
+    manual = Manual.query.filter_by(id=man_id).first()
+    if manual:
+        form = ManualForm()
+        form.title.data = manual.title
+        form.content.data = manual.content
+        return render_template("mod_admin/manual_editor.jinja", form=form, manual=manual)
+    return render_template("mod_blog/manual_not_found.jinja", man_id=man_id)
+
+
+@admin.route("/manuals/<int:man_id>/", methods=["POST"])
+@login_required
+def edit_manual(man_id):
+    manual = Manual.query.filter_by(id=man_id).first()
+    if manual:
+        edit_form = ManualForm(request.form)
+        if edit_form.validate():
+            manual.title = edit_form.title.data
+            manual.content = edit_form.content.data
+            manual.html_render = edit_form.html_render.data
+            db.session.add(manual)
+            db.session.commit()
+            flash("Edit saved", "alert-success")
+            return redirect(url_for("blog.view_manual", man_id=man_id))
+        else:
+            for error in login_form.errors:
+                flash("{} is missing".format(error), "alert-danger")
+            return redirect(url_for("admin.view_login"))

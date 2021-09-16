@@ -17,3 +17,10 @@ class ArticleForm(FlaskForm):
 class ChangePasswordForm(FlaskForm):
     old_password = PasswordField("Old Password", validators=[InputRequired()])
     new_password = PasswordField("New Password", validators=[InputRequired()])
+
+
+
+class ManualForm(FlaskForm):
+    title = StringField("Title", validators=[InputRequired()])
+    content = TextAreaField("Content")
+    html_render = HiddenField()

@@ -1,0 +1,21 @@
+{% extends "_main.jinja" %}
+
+{% block title %} Manual not found {% endblock %}
+
+{% block main %}
+<div class="row ">
+    <div class="col-md-12">
+        <div class="error-template">
+            <h1>Oops!</h1>
+            <h2>This article doesn't exists</h2>
+            <div class="error-details">
+                Unfortunately this manual doens't exists :(
+            </div>
+            <div class="error-actions">
+                <a href="/" class="btn btn-primary btn-lg"> Home </a>
+                <a href={{ url_for("blog.view_manuals") }} class="btn btn-default btn-lg">All manuals</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

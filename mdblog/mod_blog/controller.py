@@ -3,6 +3,8 @@ from flask import render_template
 from flask import request
 
 from mdblog.models import Article
+from mdblog.models import Manual
+
 
 blog = Blueprint("blog", __name__)
 
@@ -21,3 +23,20 @@ def view_article(art_id):
     if article:
         return render_template("mod_blog/article.jinja", article=article)
     return render_template("mod_blog/article_not_found.jinja", art_id=art_id)
+    
+
+@blog.route("/manuals/", methods=["GET"])
+def view_manuals():
+    page = request.args.get("page", 1, type=int)
+    paginate = Manual.query.order_by(Manual.id.desc()).paginate(page, 5, False)
+    return render_template("mod_blog/manuals.jinja",
+            manuals=paginate.items,
+            paginate=paginate)
+
+@blog.route("/manuals/<int:man_id>/")
+def view_manual(man_id):
+    manual = Manual.query.filter_by(id=man_id).first()
+    if manual:
+        return render_template("mod_blog/manual.jinja", manual=manual)
+    return render_template("mod_blog/manual_not_found.jinja", man_id=man_id)
+    
