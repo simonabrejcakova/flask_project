@@ -1,0 +1,62 @@
+{% extends "_main.jinja" %}
+
+{% block title %} Locations {% endblock %}
+
+
+{% block main %}
+    <div class="container">
+        <div class="articles">
+    {% if locations %}
+    {% for location in locations %}
+    <article class="media pt-3">
+        <img class="mr-3" src={{ url_for("static", filename="img/placeholder.svg") }}>
+        <div class="media-body ">
+            <h3 class="mt-0">
+                <a href={{ url_for("blog.view_location", loc_id=location.id) }}>
+                    {{ location.title }}
+                </a>
+            </h3>
+            {{ location.html_render | truncate(100)}}
+        </div> {# media body #}
+    </article>
+    {% endfor %}
+    </div>
+    </div>
+
+        {# PAGINATION #}
+        <ul class="pagination justify-content-center mt-3">
+
+        {# add previous button #}
+        {% if paginate.has_prev %}
+            <li class="page-item">
+                <a class="page-link" href={{url_for("blog.view_locations", page=paginate.prev_num)}} >Previous</a>
+            </li>
+        {% endif %}
+
+
+        {# ADD NUMBERED LINKS #}
+        {%- for page in paginate.iter_pages() %}
+            {% if page %}
+                {% if page != paginate.page %}
+                    <li class="page-item"> <a class="page-link" href={{ url_for("blog.view_locations", page=page) }}>{{page}}</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link">{{ page }}</a></li>
+                {% endif %}
+            {% else %}
+                <li class="page-item"><span class="ellipsis"> ...</span></li>
+            {% endif %}
+        {%- endfor %}
+
+        {# add next button #}
+        {% if paginate.has_next %}
+            <li class="page-item">
+                <a class="page-link" href={{url_for("blog.view_locations", page=paginate.next_num)}} >Next</a>
+            </li>
+        {% endif %}
+        </ul>
+
+    {% else %}
+    <p> No locations </p>
+    {% endif %}
+
+{% endblock %}

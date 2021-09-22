@@ -7,12 +7,14 @@ from flask import session
 from flask import flash
 
 from mdblog.models import db
+from mdblog.models import Location
 from mdblog.models import Article
 from mdblog.models import User
 from mdblog.models import Manual
 
 from .forms import ArticleForm
 from .forms import ManualForm
+from .forms import LocationForm
 from .forms import ChangePasswordForm
 from .forms import LoginForm
 
@@ -23,15 +25,15 @@ from mdblog.tasks import notify_newsletter
 admin = Blueprint("admin", __name__)
 
 
+
 @admin.route("/")
 @login_required
 def view_admin():
-    page=request.args.get("page", 1, type=int)
-    paginate = Article.query.order_by(Article.id.desc()).paginate(
-            page, 10, False)
-    return render_template("mod_admin/admin.jinja",
-            articles=paginate.items,
-            paginate=paginate)
+    return render_template("mod_admin/admin.jinja")
+        
+
+
+
 
 @admin.route("/articles/new/", methods=["GET"])
 @login_required
@@ -96,6 +98,9 @@ def edit_article(art_id):
                 flash("{} is missing".format(error), "alert-danger")
             return redirect(url_for("admin.view_login"))
 
+
+
+
 @admin.route("/login/", methods=["GET"])
 def view_login():
     login_form = LoginForm()
@@ -150,6 +155,8 @@ def logout_user():
     session.pop("logged")
     flash("Logout successful", "alert-success")
     return redirect(url_for("main.view_welcome_page"))
+
+
 
 
 
@@ -213,3 +220,108 @@ def edit_manual(man_id):
             for error in login_form.errors:
                 flash("{} is missing".format(error), "alert-danger")
             return redirect(url_for("admin.view_login"))
+
+
+
+
+
+@admin.route("/viewmanuals")
+@login_required
+def view_manual():
+    page=request.args.get("page", 1, type=int)
+    paginate = Manual.query.order_by(Manual.id.desc()).paginate(
+            page, 10, False)
+    return render_template("mod_admin/view_manual.jinja",
+            manuals=paginate.items,
+            paginate=paginate)
+
+
+
+@admin.route("/viewarticles")
+@login_required
+def view_article():
+    page=request.args.get("page", 1, type=int)
+    paginate = Article.query.order_by(Article.id.desc()).paginate(
+            page, 10, False)
+    return render_template("mod_admin/view_article.jinja",
+            articles=paginate.items,
+            paginate=paginate)
+
+
+@admin.route("/viewlocations")
+@login_required
+def view_location():
+    page=request.args.get("page", 1, type=int)
+    paginate = Location.query.order_by(Location.id.desc()).paginate(
+            page, 10, False)
+    return render_template("mod_admin/view_location.jinja",
+            locations=paginate.items,
+            paginate=paginate)
+
+
+
+
+
+
+
+@admin.route("/locations/new/", methods=["GET"])
+@login_required
+def view_add_location():
+    form = LocationForm()
+    return render_template("mod_admin/location_editor.jinja", form=form)
+
+@admin.route("/locations/", methods=["POST"])
+@login_required
+def add_location():
+    add_form = LocationForm(request.form)
+    if add_form.validate():
+        new_location = Location(
+                title = add_form.title.data,
+                content = add_form.content.data,
+                html_render = add_form.html_render.data)
+        db.session.add(new_location)
+        db.session.commit()
+        flash("Location was saved", "alert-success")
+
+
+        return redirect(url_for("blog.view_locations"))
+    else:
+        for error in add_form.errors:
+            flash("{} is required".format(error), "alert-danger")
+        return render_template("mod_admin/location_editor.jinja", form=add_form)
+
+
+@admin.route("/locations/<int:loc_id>/edit/", methods=["GET"])
+@login_required
+def view_location_editor(loc_id):
+    location = Location.query.filter_by(id=loc_id).first()
+    if location:
+        form = LocationForm()
+        form.title.data = location.title
+        form.content.data = location.content
+        return render_template("mod_admin/location_editor.jinja", form=form, location=location)
+    return render_template("mod_blog/location_not_found.jinja", loc_id=loc_id)
+
+
+@admin.route("/locations/<int:loc_id>/", methods=["POST"])
+@login_required
+def edit_location(loc_id):
+    location = Location.query.filter_by(id=loc_id).first()
+    if location:
+        edit_form = LocationForm(request.form)
+        if edit_form.validate():
+            location.title = edit_form.title.data
+            location.content = edit_form.content.data
+            location.html_render = edit_form.html_render.data
+            db.session.add(location)
+            db.session.commit()
+            flash("Edit saved", "alert-success")
+            return redirect(url_for("blog.view_location", loc_id=loc_id))
+        else:
+            for error in login_form.errors:
+                flash("{} is missing".format(error), "alert-danger")
+            return redirect(url_for("admin.view_login"))
+
+
+
+

@@ -1,0 +1,15 @@
+
+{% extends "_main.jinja" %}
+
+{% block title %} Location {{location.title}} {% endblock %}
+
+{% block main %}
+    <article>
+        <h1>
+            {{ location.title }}
+        </h1>
+        <div class=content>
+            {{ location.html_render }}
+        </div>
+    </article>
+{% endblock %}
