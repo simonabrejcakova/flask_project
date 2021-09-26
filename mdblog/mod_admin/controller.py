@@ -25,7 +25,7 @@ from mdblog.tasks import notify_newsletter
 admin = Blueprint("admin", __name__)
 
 
-
+#MAIN ADMIN
 @admin.route("/")
 @login_required
 def view_admin():
@@ -33,7 +33,7 @@ def view_admin():
         
 
 
-
+#ARTICLES a newsletter
 
 @admin.route("/articles/new/", methods=["GET"])
 @login_required
@@ -99,7 +99,7 @@ def edit_article(art_id):
             return redirect(url_for("admin.view_login"))
 
 
-
+#LOGIN,ChangePassword,Logout
 
 @admin.route("/login/", methods=["GET"])
 def view_login():
@@ -161,7 +161,7 @@ def logout_user():
 
 
 
-
+#MANUALS
 
 @admin.route("/manuals/new/", methods=["GET"])
 @login_required
@@ -223,7 +223,7 @@ def edit_manual(man_id):
 
 
 
-
+#jednotlive odkazy na edit na hlavnej admin stranke
 
 @admin.route("/viewmanuals")
 @login_required
@@ -262,7 +262,7 @@ def view_location():
 
 
 
-
+#LOCATION
 
 @admin.route("/locations/new/", methods=["GET"])
 @login_required
@@ -321,6 +321,58 @@ def edit_location(loc_id):
             for error in login_form.errors:
                 flash("{} is missing".format(error), "alert-danger")
             return redirect(url_for("admin.view_login"))
+
+
+
+
+#delete button
+
+@admin.route("/deletemanual/<int:man_id>/")
+@login_required
+
+def delete_manual(man_id):
+    manual = Manual.query.filter_by(id=man_id).first()
+    try:
+        db.session.delete(manual)
+        db.session.commit()
+        flash("Manual deleted", "alert-success")
+        return redirect(url_for("admin.view_manual"))
+    
+    except:
+        return render_template("errors/500.jinja")
+
+
+
+@admin.route("/deletelocation/<int:loc_id>/")
+@login_required
+
+def delete_location(loc_id):
+    location = Location.query.filter_by(id=loc_id).first()
+    try:
+        db.session.delete(location)
+        db.session.commit()
+        flash("Location deleted", "alert-success")
+        return redirect(url_for("admin.view_location"))
+    
+    except:
+        return render_template("errors/500.jinja")
+
+
+
+
+@admin.route("/deletearticle/<int:art_id>/")
+@login_required
+
+def delete_article(art_id):
+    article = Article.query.filter_by(id=art_id).first()
+    try:
+        db.session.delete(article)
+        db.session.commit()
+        flash("Article deleted", "alert-success")
+        return redirect(url_for("admin.view_article"))
+    
+    except:
+        return render_template("errors/500.jinja")
 
 
 

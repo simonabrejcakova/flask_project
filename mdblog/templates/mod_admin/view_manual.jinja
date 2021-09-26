@@ -16,6 +16,7 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Title</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -24,6 +25,7 @@
         <tr>
             <th> {{ manual.id }}</td>
             <td> <a href={{ url_for(".view_manual_editor", man_id=manual.id) }}> {{ manual.title }} </a> </td>
+            <td> <a href={{ url_for(".delete_manual", man_id=manual.id) }} class="btn btn-primary"> Delete </a> </td>
         </tr>
     {% endfor %}
   </tbody>
