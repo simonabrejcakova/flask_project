@@ -10,10 +10,9 @@ from mdblog.models import db
 from mdblog.models import Location
 from mdblog.models import Article
 from mdblog.models import User
-from mdblog.models import Manual
+
 
 from .forms import ArticleForm
-from .forms import ManualForm
 from .forms import LocationForm
 from .forms import ChangePasswordForm
 from .forms import LoginForm
@@ -163,77 +162,9 @@ def logout_user():
 
 #MANUALS
 
-@admin.route("/manuals/new/", methods=["GET"])
-@login_required
-def view_add_manual():
-    form = ManualForm()
-    return render_template("mod_admin/manual_editor.jinja", form=form)
-
-@admin.route("/manuals/", methods=["POST"])
-@login_required
-def add_manual():
-    add_form = ManualForm(request.form)
-    if add_form.validate():
-        new_manual = Manual(
-                title = add_form.title.data,
-                content = add_form.content.data,
-                html_render = add_form.html_render.data)
-        db.session.add(new_manual)
-        db.session.commit()
-        flash("Manual was saved", "alert-success")
-
-
-        return redirect(url_for("blog.view_manuals"))
-    else:
-        for error in add_form.errors:
-            flash("{} is required".format(error), "alert-danger")
-        return render_template("mod_admin/manual_editor.jinja", form=add_form)
-
-
-@admin.route("/manuals/<int:man_id>/edit/", methods=["GET"])
-@login_required
-def view_manual_editor(man_id):
-    manual = Manual.query.filter_by(id=man_id).first()
-    if manual:
-        form = ManualForm()
-        form.title.data = manual.title
-        form.content.data = manual.content
-        return render_template("mod_admin/manual_editor.jinja", form=form, manual=manual)
-    return render_template("mod_blog/manual_not_found.jinja", man_id=man_id)
-
-
-@admin.route("/manuals/<int:man_id>/", methods=["POST"])
-@login_required
-def edit_manual(man_id):
-    manual = Manual.query.filter_by(id=man_id).first()
-    if manual:
-        edit_form = ManualForm(request.form)
-        if edit_form.validate():
-            manual.title = edit_form.title.data
-            manual.content = edit_form.content.data
-            manual.html_render = edit_form.html_render.data
-            db.session.add(manual)
-            db.session.commit()
-            flash("Edit saved", "alert-success")
-            return redirect(url_for("blog.view_manual", man_id=man_id))
-        else:
-            for error in login_form.errors:
-                flash("{} is missing".format(error), "alert-danger")
-            return redirect(url_for("admin.view_login"))
-
 
 
 #jednotlive odkazy na edit na hlavnej admin stranke
-
-@admin.route("/viewmanuals")
-@login_required
-def view_manual():
-    page=request.args.get("page", 1, type=int)
-    paginate = Manual.query.order_by(Manual.id.desc()).paginate(
-            page, 10, False)
-    return render_template("mod_admin/view_manual.jinja",
-            manuals=paginate.items,
-            paginate=paginate)
 
 
 
@@ -326,20 +257,6 @@ def edit_location(loc_id):
 
 
 #delete button
-
-@admin.route("/deletemanual/<int:man_id>/")
-@login_required
-
-def delete_manual(man_id):
-    manual = Manual.query.filter_by(id=man_id).first()
-    try:
-        db.session.delete(manual)
-        db.session.commit()
-        flash("Manual deleted", "alert-success")
-        return redirect(url_for("admin.view_manual"))
-    
-    except:
-        return render_template("errors/500.jinja")
 
 
 

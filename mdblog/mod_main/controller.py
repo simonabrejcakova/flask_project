@@ -33,3 +33,6 @@ def add_newsletter():
         for error in newsletter_form.errors:
             flash("{} is not valid".format(error), "alert-danger")
     return redirect(url_for("main.view_welcome_page"))
+
+
+

@@ -27,18 +27,12 @@ def view_article(art_id):
 
 @blog.route("/manuals/", methods=["GET"])
 def view_manuals():
-    page = request.args.get("page", 1, type=int)
-    paginate = Manual.query.order_by(Manual.id.desc()).paginate(page, 5, False)
-    return render_template("mod_blog/manuals.jinja",
-            manuals=paginate.items,
-            paginate=paginate)
+    return render_template("mod_blog/manuals.jinja")
 
-@blog.route("/manuals/<int:man_id>/")
-def view_manual(man_id):
-    manual = Manual.query.filter_by(id=man_id).first()
-    if manual:
-        return render_template("mod_blog/manual.jinja", manual=manual)
-    return render_template("mod_blog/manual_not_found.jinja", man_id=man_id)
+    
+@blog.route("/manuals/barista/")
+def view_manual_barista():
+    return render_template("mod_blog/manual1.jinja",)
 
 
 @blog.route("/locations/", methods=["GET"])
