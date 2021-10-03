@@ -109,3 +109,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+#manual
+mdblog/templates/mod_blog/barista.jinja
