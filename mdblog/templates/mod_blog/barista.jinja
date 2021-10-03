@@ -2,45 +2,27 @@
 
 {% block main %}
 
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
-</head>
 
 <body>
+  <div class="search-container">
+    <div class="row justify-content-center">
+      <div class="col-md-6"></div>
+      <input type="text" id="search">
+      <input type="hidden" id="hid_search">
+      <button class="btn btn-primary" type="submit" id="button"
+        onmousedown="doSearch(document.getElementById('search').value)" value="Find">Search</button>
+  </div>
 
-  <nav class="navbar navbar-expand-sm bg-light  fixed-top anchor-links">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="goSmoothly nav-link" href="#navod1">Návod na kafe 1</a>
-      </li>
-      <li class="nav-item">
-        <a class="goSmoothly nav-link" href="#navod2">Návod na kafe 2</a>
-      </li>
-      <li class="nav-item">
-        <a class="goSmoothly nav-link" href="#navod3">Návod na kafe 3</a>
-      </li>
-      <div class="search-container">
-        <form class="form-inline">
-          <!-- Source: https://stackoverflow.com/questions/5886858/full-text-search-in-html-ignoring-tags/5887719#5887719 -->
-          <input type="text" id="search">
-          <input type="hidden" id="hid_search">
-          <button class="btn btn-success" type="button" id="button"
-            onmousedown="doSearch(document.getElementById('search').value)" value="Find">Search</button>
-        </form>
-      </div>
-    </ul>
-  </nav>
+  <p> <a class="goSmoothly nav-link" href="#navod1">Návod na kafe 1</a></p>
+  <p><a class="goSmoothly nav-link" href="#navod2">Návod na kafe 2</a></p>
+  <p><a class="goSmoothly nav-link" href="#navod3">Návod na kafe 3</a></p>
+     
 
 
 
-  <div class="container p-3 my-3 border">
+
+  <div class="container p-3 my-3">
     <h1 id="navod1">Návod na kafe 1</h1>
     <p>This container has a border and some extra padding and margins.This container has a border
       and some extra padding and margins.This container has a border and some extra padding and
@@ -68,10 +50,6 @@
       and some extra padding and margins.This container has a border and some extra padding and margins.</p>
   </div>
 
-  <div class="container">
-    <iframe style="border:none" src="https://frame.mapy.cz/s/nujusahela" width="400" height="280"
-      frameborder="0"></iframe>
-  </div>
 
   <div class="container p-3 my-3 bg-dark text-white">
     <h1 id="navod2">Návod na kafe 2</h1>

@@ -9,14 +9,12 @@
     {% if locations %}
     {% for location in locations %}
     <article class="media pt-3">
-        <img class="mr-3" src={{ url_for("static", filename="img/placeholder.svg") }}>
         <div class="media-body ">
             <h3 class="mt-0">
                 <a href={{ url_for("blog.view_location", loc_id=location.id) }}>
                     {{ location.title }}
                 </a>
             </h3>
-            {{ location.html_render | truncate(100)}}
         </div> {# media body #}
     </article>
     {% endfor %}

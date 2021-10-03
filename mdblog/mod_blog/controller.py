@@ -32,7 +32,7 @@ def view_manuals():
     
 @blog.route("/manuals/barista/")
 def view_manual_barista():
-    return render_template("mod_blog/manual1.jinja",)
+    return render_template("mod_blog/barista.jinja",)
 
 
 @blog.route("/locations/", methods=["GET"])
