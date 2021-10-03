@@ -14,15 +14,29 @@
         onmousedown="doSearch(document.getElementById('search').value)" value="Find">Search</button>
   </div>
 
-  <p>OBSAH</p>
+
+  <button class="btn btn-primary" type="submit" onclick="myFunction()">OBSAH</button>
+
+  <div id="CONTENT">
   <ul>
   <li><a href="#navod1">1 Firemní kódex</a></li>
     <ul><li><a href="#navod11">1.1 Pracovní zásady</a></li></ul>
   <li><a href="#navod3">Návod na kafe 3</a></li>
   <li><a href="#navod4">Návod na kafe 4</a></li>
   </ul>
-  
-     
+  </div>
+
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("CONTENT");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    </script>
 
 
 
@@ -31,27 +45,23 @@
     <h1 id="navod1">1 Firemní kódex</h1>
     <p>Firemní kodex je jedním ze základních předpisů a cílem tohoto kodexu je 
       deklarovat vůli pracovníků dodržovat tuto normu chování při jednání se zákazníky, vůči okolí a mezi 
-      sebou navzájem. Firemní kodex je morálním závazkem a součást profesního jednání každého pracovníka, 
-      který se podílí na chodu firmy, ať jako společník, zaměstnanec, spolupracovník nebo franchisant 
+      sebou navzájem. Firemní kodex je morálním závazkem a součást pro
       (obecně pracovníci). Všichni pracovníci jsou oprávnění požadovat dodržování tohoto firemního kodexu od 
-      ostatních. Jakékoliv jeho porušení je považováno za jednání proti zájmům firmy a porušení pracovní kázně.</p>
+      ostatních. Jakékoliv jeho porušení je považováno za rušení pracovní kázně.</p>
     <h2 id=navod11>1.1 Pracovni zásady</h2>
     <p> ◉ Každý pracovník nastupuje do práce včas a striktně dodržuje pracovní dobu a úvazek.</p>
-    <p> ◉ Prodávat se smí pouze na smluvně určeném místě (tzn. má-li vozík stanoviště v Brně na České, prodává se
-       pouze zde, po cestě slouží jen jako reklama).
+    <p> ◉ Prodáva sa jenom na určených mistech...
     </p>
-    <p> ◉ Každý pracovník je povinen dodržovat vnitřní předpisy firmy a je povinen chovat se čestně a v souladu 
+    <p> ◉ Každý pracovník je povinen je povinen chovat se čestně a v souladu 
       s obecně uznávanými morálními principy.
     </p>
     <p> ◉ Každý pracovník je povinen respektovat své kolegy a dodržovat zásady vzájemné důvěry a spolupráce, 
-      nevyvolávat na pracovišti spory a případné konfliktní situace řešit pozitivně, nemluvit negativně o
-       svých kolezích v širším kolektivu a bez přítomnosti dané osoby. Při slovním projevu nebude pracovník
-        užívat hrubých, urážlivých či jinak hanlivých výrazů.
+      nevyvolávat na pracovišti spory a případné konfliktní situace řešit pozitivně, 
+       svých kolezích v širším kolekt...
     </p>
-    <p> ◉ Každý pracovník volí vzhled, oděv a obuv přiměřené své pracovní pozici a odpovídající společenským 
-      standardům. Pracovník je upravený, učesaný, bez extravagantních výstřelků. Oblečení i obuv udržuje 
-      pracovník v čistotě za současného dodržování pravidel osobní hygieny.</p>
-    <p> ◉ Každý pracovník si musí být vědom, že svým chováním a osobním vystupováním reprezentuje také firmu.</p>
+    <p> ◉ Každý pracovník volí vzhleudržuje 
+      pracovník v čistotě za současného dodržování .</p>
+    <p> ◉ Každý pracovník si musí být vědom, že svým chováním a osobním vystu.</p>
       
   </div>
 
