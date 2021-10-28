@@ -5,6 +5,7 @@ from flask import redirect
 from flask import url_for
 from flask import session
 from flask import flash
+from werkzeug.security import generate_password_hash
 
 from mdblog.models import db
 from mdblog.models import Location
@@ -16,6 +17,7 @@ from .forms import ArticleForm
 from .forms import LocationForm
 from .forms import ChangePasswordForm
 from .forms import LoginForm
+from .forms import NewUserForm
 
 from .utils import login_required
 
@@ -147,6 +149,26 @@ def change_password():
         for error in form.errors:
             flash("{} is missing".format(error), "alert-danger")
         return render_template("mod_admin/change_password.jinja", form=form)
+
+
+@admin.route("/newuser", methods=["GET", "POST"])
+@login_required
+def new_user():
+    form=NewUserForm(request.form)
+    if request.method== "POST" and form.validate():
+        hashed_password = generate_password_hash(form.password.data, method="sha256")
+        
+        new_user= User(
+            username = form.username.data,
+            password=hashed_password
+        )
+        db.session.add(new_user)
+        db.session.commit()
+        flash("User created", "alert-success")
+        return redirect(url_for("admin.view_admin"))
+    else:
+        return render_template("mod_admin/new_user.jinja", form=form)
+
 
 @admin.route("/logout/", methods=["POST"])
 @login_required

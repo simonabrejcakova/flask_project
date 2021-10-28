@@ -7,4 +7,25 @@
 /*# sourceMappingURL=bootstrap.min.css.map */
 
 
+/*#  button primary */
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #E6BF83; border-color: #E6BF83    !important;
+}
+
+
+/*# nav all posibiities  */
+
+
+ul.nav li a, ul.nav li a:visited {
+    color: #E6BF83 !important;
+}
+
+ul.nav li a:hover, ul.nav li a:active {
+    color: #C58917 !important;
+}
+
+ul.nav li.active a {
+    color: #E6BF83 !important;
+}
 

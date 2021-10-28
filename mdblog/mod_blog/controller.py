@@ -2,9 +2,14 @@ from flask import Blueprint
 from flask import render_template
 from flask import request
 
+
 from mdblog.models import Article
 from mdblog.models import Manual
 from mdblog.models import Location
+from mdblog.models import User
+
+
+
 
 blog = Blueprint("blog", __name__)
 
@@ -49,4 +54,8 @@ def view_location(loc_id):
     if location:
         return render_template("mod_blog/location.jinja", location=location)
     return render_template("mod_blog/location_not_found.jinja", loc_id=loc_id)
+    
+@blog.route("/techsupport/")
+def view_techsupport():
+    return render_template("mod_blog/techsupport_form.jinja")
     

@@ -2,6 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 
+
 db = SQLAlchemy()
 
 class Article(db.Model):
@@ -21,7 +22,7 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
-
+    
 
 class Newsletter(db.Model):
     id = db.Column(db.Integer, primary_key=True)
