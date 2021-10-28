@@ -211,6 +211,11 @@ def view_location():
             locations=paginate.items,
             paginate=paginate)
 
+    
+@admin.route("/vysledky/")
+def view_google_sheets():
+    return render_template("mod_admin/google_sheets.jinja")
+    
 
 
 

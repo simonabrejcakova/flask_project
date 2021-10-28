@@ -59,3 +59,10 @@ def view_location(loc_id):
 def view_techsupport():
     return render_template("mod_blog/techsupport_form.jinja")
     
+@blog.route("/mlynky/")
+def view_mlynky():
+    return render_template("mod_blog/mlynky.jinja")
+
+@blog.route("/kontakty/")
+def view_contact():
+    return render_template("mod_blog/contact.jinja")
