@@ -1,38 +1,109 @@
 <nav>
+  {# USER #}
     <ul class="nav justify-content-center">
+
+      {% if session.ahoj%}
       <li class="nav-item">
         <a class="nav-link" href={{ url_for("blog.view_locations") }}>Locations</a>
       </li>
+      {% endif %}
+
+      {% if session.ahoj%}
       <li class="nav-item">
         <a class="nav-link" href={{ url_for("blog.view_articles") }}>FAQ</a>
       </li>
+      {% endif %}
 
+
+      {% if session.ahoj%}
       <li class="nav-item">
         <a class="nav-link" href={{ url_for("blog.view_manuals") }}>Manuals</a>
       </li>
+      {% endif %}
 
+      {% if session.ahoj%}
       <li class="nav-item">
         <a class="nav-link" href={{ url_for("blog.view_techsupport") }}>Technická podpora</a>
       </li>
+      {% endif %}
 
+      {% if session.ahoj%}
       <li class="nav-item">
         <a class="nav-link" href={{ url_for("blog.view_mlynky") }}>Mlýnky</a>
       </li>
+      {% endif %}
 
+      {% if session.ahoj%}
       <li class="nav-item">
         <a class="nav-link" href={{ url_for("blog.view_contact") }}>Kontakty</a>
       </li>
+      {% endif %}
 
-
+      {% if session.ahoj%}
       <li class="nav-item">
-        <a class="nav-link" href={{ url_for("admin.view_admin") }}>Admin</a>
+        <form action="{{url_for("admin.logout_user_ahoj")}}" method="post">
+            <button type="submit" class="btn btn-outline-primary" href={{ url_for("admin.view_admin") }}>Logout</a>
+        </form>
       </li>
-      {% if session.logged %}
+      {% endif %}
+
+
+
+
+      {# ADMIN #}
+
+      {% if session.logged%}
+      <li class="nav-item">
+        <a class="nav-link" href={{ url_for("blog.view_locations") }}>Locations</a>
+      </li>
+      {% endif %}
+
+      {% if session.logged%}
+      <li class="nav-item">
+        <a class="nav-link" href={{ url_for("blog.view_articles") }}>FAQ</a>
+      </li>
+      {% endif %}
+
+
+      {% if session.logged%}
+      <li class="nav-item">
+        <a class="nav-link" href={{ url_for("blog.view_manuals") }}>Manuals</a>
+      </li>
+      {% endif %}
+
+      {% if session.logged%}
+      <li class="nav-item">
+        <a class="nav-link" href={{ url_for("blog.view_techsupport") }}>Technická podpora</a>
+      </li>
+      {% endif %}
+
+      {% if session.logged%}
+      <li class="nav-item">
+        <a class="nav-link" href={{ url_for("blog.view_mlynky") }}>Mlýnky</a>
+      </li>
+      {% endif %}
+
+      {% if session.logged%}
+      <li class="nav-item">
+        <a class="nav-link" href={{ url_for("blog.view_contact") }}>Kontakty</a>
+      </li>
+      {% endif %}
+
+
+      {% if session.logged%}
+      <li class="nav-item">
+        <a class="nav-link" href={{ url_for("admin.view_admin") }}>ADMIN</a>
+      </li>
+      {% endif %}
+
+      {% if session.logged%}
       <li class="nav-item">
         <form action="{{url_for("admin.logout_user")}}" method="post">
             <button type="submit" class="btn btn-outline-primary" href={{ url_for("admin.view_admin") }}>Logout</a>
         </form>
       </li>
       {% endif %}
+
+
     </ul>
 </nav>

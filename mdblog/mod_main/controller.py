@@ -13,14 +13,6 @@ from mdblog.models import db
 main = Blueprint("main", __name__)
 
 
-@main.route("/")
-def view_welcome_page():
-    return render_template("mod_main/welcome_page.jinja")
-
-@main.route("/about/")
-def view_about():
-    return render_template("mod_main/about.jinja")
-
 @main.route("/newsletter/", methods=["POST"])
 def add_newsletter():
     newsletter_form = NewsletterForm(request.form)
@@ -32,7 +24,8 @@ def add_newsletter():
     else:
         for error in newsletter_form.errors:
             flash("{} is not valid".format(error), "alert-danger")
-    return redirect(url_for("main.view_welcome_page"))
+    return redirect(url_for("admin.view_welcome_page"))
 
-
-
+@main.route("/")
+def view_welcome_page():
+    return render_template("mod_main/welcome_page.jinja")

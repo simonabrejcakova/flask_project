@@ -15,3 +15,12 @@ def login_required(func):
         return func(*args, **kwargs)
     return decorated_function
 
+
+def login_required1(func):
+    @wraps(func)
+    def decorated_function(*args, **kwargs):
+        if "ahoj" not in session:
+            flash("You must be logged in", "alert-danger")
+            return redirect(url_for("admin.view_login"))
+        return func(*args, **kwargs)
+    return decorated_function

@@ -8,6 +8,12 @@
 
 <h2> Articles </h2>
 <a href={{ url_for(".view_add_article") }} role="button" class="btn btn-primary">Add new article</a>
+<button onclick="goBack()">Go Back</button>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
 
 {# CREATE TABLE #}
 <table class="table table-sm">
