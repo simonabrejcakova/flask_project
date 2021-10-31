@@ -24,7 +24,7 @@ def add_newsletter():
     else:
         for error in newsletter_form.errors:
             flash("{} is not valid".format(error), "alert-danger")
-    return redirect(url_for("admin.view_welcome_page"))
+    return redirect(url_for("main.view_welcome_page"))
 
 @main.route("/")
 def view_welcome_page():

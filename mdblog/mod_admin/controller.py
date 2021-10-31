@@ -31,7 +31,13 @@ admin = Blueprint("admin", __name__)
 @login_required
 def view_admin():
     return render_template("mod_admin/admin.jinja")
-        
+
+#LOGIN 
+@admin.route("/login/", methods=["GET"])
+def view_login():
+    login_form = LoginForm()
+    return render_template("mod_admin/login.jinja", form=login_form)
+
 
 
 #ARTICLES a newsletter
@@ -153,6 +159,39 @@ def change_password():
 
 
 
+
+@admin.route("/changepasswordahoj/", methods=["GET"])
+@login_required1
+def view_change_password_ahoj():
+    form = ChangePasswordForm()
+    return render_template("mod_admin/change_password_ahoj.jinja", form=form)
+
+
+
+
+@admin.route("/changepasswordahoj/", methods=["POST"])
+@login_required1
+def change_password_ahoj():
+    form = ChangePasswordForm(request.form)
+    if form.validate():
+        user = User.query.filter_by(username = session["ahoj"]).first()
+        if user and user.check_password(form.old_password.data):
+            user.set_password(form.new_password.data)
+            db.session.add(user)
+            db.session.commit()
+            flash("Password changed!", "alert-success")
+            return redirect(url_for("main.view_welcome_page"))
+        else:
+            flash("Invalid credentials", "alert-danger")
+            return render_template("mod_admin/change_password_ahoj.jinja", form=form)
+    else:
+        for error in form.errors:
+            flash("{} is missing".format(error), "alert-danger")
+        return render_template("mod_admin/change_password_ahoj.jinja", form=form)
+
+
+
+
 @admin.route("/newuser", methods=["GET", "POST"])
 @login_required
 def new_user():
@@ -164,10 +203,12 @@ def new_user():
             username = form.username.data,
             password=hashed_password
         )
+
         db.session.add(new_user)
         db.session.commit()
         flash("User created", "alert-success")
         return redirect(url_for("admin.view_admin"))
+        
     else:
         return render_template("mod_admin/new_user.jinja", form=form)
 
@@ -187,12 +228,6 @@ def logout_user_ahoj():
     flash("Logout successful", "alert-success")
     return redirect(url_for("main.view_welcome_page"))
 
-
-
-
-
-
-#MANUALS
 
 
 
@@ -299,7 +334,6 @@ def edit_location(loc_id):
 
 @admin.route("/deletelocation/<int:loc_id>/")
 @login_required
-
 def delete_location(loc_id):
     location = Location.query.filter_by(id=loc_id).first()
     try:
@@ -316,7 +350,6 @@ def delete_location(loc_id):
 
 @admin.route("/deletearticle/<int:art_id>/")
 @login_required
-
 def delete_article(art_id):
     article = Article.query.filter_by(id=art_id).first()
     try:
@@ -329,12 +362,5 @@ def delete_article(art_id):
         return render_template("errors/500.jinja")
 
 
-
-
-@admin.route("/login/", methods=["GET"])
-def view_login():
-    login_form = LoginForm()
-
-    return render_template("mod_admin/login.jinja", form=login_form)
 
 

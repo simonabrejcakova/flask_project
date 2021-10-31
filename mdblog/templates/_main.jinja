@@ -30,10 +30,13 @@
 <body>
 <header>
     <h1 class="header"> <a href="{{ url_for("main.view_welcome_page") }}"> Blog </a></h1>
-     {% if 'logged' not in session%}
+    {% if 'logged' in session%}
+    <h3 class="header"><a href="{{ url_for("admin.view_login")}}" style="display:none"> Login </a></h3>
+    {% elif "ahoj" in session%}
+    <h3 class="header"><a href="{{ url_for("admin.view_login")}}" style="display:none"> Login </a></h3>
+    {% else %}
     <h3 class="header"><a href="{{ url_for("admin.view_login")}}"> Login </a></h3>
-    {% endif%}
-   
+    {% endif %}
 </header>
 
 {% include "_nav.jinja" %}
