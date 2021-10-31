@@ -258,6 +258,7 @@ def view_location():
 
     
 @admin.route("/vysledky/")
+@login_required
 def view_google_sheets():
     return render_template("mod_admin/google_sheets.jinja")
     

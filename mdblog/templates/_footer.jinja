@@ -2,6 +2,7 @@
     <div class="container">
         <span class="text-muted"> (c) 2021 Blog </span>
     </div>
+    {% if session.ahoj%}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -15,4 +16,22 @@
             </div>
         </div>
     </div>
+    {% elif session.logged%}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form action="{{ url_for("main.add_newsletter") }}" method="post">
+                    {{ newsletter_form.csrf_token }}
+                    {{ newsletter_form.email(
+                            placeholder="Prihlás sa na odber správ",
+                            class="form-control") }}
+                    <button type="submit" class="btn btn-primary">Odoberať</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% else%}
+    
+    {% endif %}
+
 </footer>
