@@ -28,10 +28,11 @@
 {% endwith %}
 
 <body>
-<header>
-    <h1 class="header"> <a href="{{ url_for("main.view_welcome_page") }}"> Blog </a></h1>
-</header>
-
+<p style="text-align:center;">
+    <a href="{{ url_for("main.view_welcome_page") }}">
+        <img alt="logo" src="https://www.qries.com/images/banner_logo.png">
+    </a>
+</p>
 {% include "_nav.jinja" %}
 
 <main class="container">
