@@ -1,0 +1,156 @@
+{% extends "_main.jinja" %}
+
+{% block main %}
+
+
+  <div class="search-container">
+    <div class="pull-right">
+      <input type="text" id="search">
+      <input type="hidden" id="hid_search">
+      <button class="btn btn-primary" type="submit" id="button"
+          onmousedown="doSearch(document.getElementById('search').value)" value="Find">Search</button>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="articles">
+      <article class="media pt-3">
+        <div class="media-body ">
+            <h3><a onclick="myFunction()"><u>OBSAH</u></a></h3>
+
+              <div id="CONTENT">
+              <ul>
+              <li><a href="#navod1">1 PRISLUHA kódex</a></li>
+                <ul><li><a href="#navod11">1.1 Pracovní zásady</a></li></ul>
+              <li><a href="#navod3">Návod na kafe 3</a></li>
+              <li><a href="#navod4">Návod na kafe 4</a></li>
+              </ul>
+              </div>
+  
+    <h3 class="mt-0" id="navod1">1 Firemní kódex</h3>>
+    <p>Firemní kodex je jedním ze základních předpisů a cílem tohoto kodexu je 
+      deklarovat vůli pracovníků dodržovat tuto normu chování při jednání se zákazníky, vůči okolí a mezi 
+      sebou navzájem. Firemní kodex je morálním závazkem a součást pro
+      (obecně pracovníci). Všichni pracovníci jsou oprávnění požadovat dodržování tohoto firemního kodexu od 
+      ostatních. Jakékoliv jeho porušení je považováno za rušení pracovní kázně.</p>
+    <h2 id=navod11>1.1 Pracovni zásady</h2>
+    <p> ◉ Každý pracovník nastupuje do práce včas a striktně dodržuje pracovní dobu a úvazek.</p>
+    <p> ◉ Prodáva sa jenom na určených mistech...
+    </p>
+    <p> ◉ Každý pracovník je povinen je povinen chovat se čestně a v souladu 
+      s obecně uznávanými morálními principy.
+    </p>
+    <p> ◉ Každý pracovník je povinen respektovat své kolegy a dodržovat zásady vzájemné důvěry a spolupráce, 
+      nevyvolávat na pracovišti spory a případné konfliktní situace řešit pozitivně, 
+       svých kolezích v širším kolekt...
+    </p>
+    <p> ◉ Každý pracovník volí vzhleudržuje 
+      pracovník v čistotě za současného dodržování .</p>
+    <p> ◉ Každý pracovník si musí být vědom, že svým chováním a osobním vystu.</p>
+
+  </div>
+
+
+
+  <div class="container p-3 my-3 bg-dark text-white">
+    <h1 id="navod3">Návod na kafe 3</h1>
+    <p>This container has a kava dark background color and a white text, and some extra padding and margins.</p>
+    <p>This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has
+      a border and some extra padding and margins.This container has a border and some extra padding
+      and margins.This container has a border and some extra padding and margins.This container has a
+      border and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and margins.</p>
+    <p>This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This aaaacontainer has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has
+      a border and some extra padding and margins.This container has a border and some extra padding
+      and margins.This container has a border and some extra padding and margins.This container has a
+      border and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and margins.</p>
+    <p>This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has
+      a border and some extra padding and margins.This container has a border and some extra padding
+      and margins.This container has a border and some extra padding and margins.This container has a
+      border and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and margins.</p>
+    <p>This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has
+      a border and some extra padding and margins.This container has a border and some extra padding
+      and margins.This container has a border and some extra padding and margins.This container has a
+      border and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and margins.</p>
+  </div>
+
+  <div class="container p-3 my-3 bg-primary text-white">
+    <h1 id="navod4">Návod na kafe 4</h1>
+    <p>This container has a blue background color and a white text, and some extra padding and margins.</p>
+    <p>This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has
+      a border and some extra padding and margins.This container has a border and some extra padding
+      and margins.This container has a border and some extra padding and margins.This container has a
+      border and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has a border
+      and some extra padding nooooooooooooooooooon and margins.This container has a border and some extra padding
+      and margins.</p>
+    <p>This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has
+      a border and some extra padding and margins.This container has a border and some extra padding
+      and margins.This container has a border and some extra padding and margins.This container has a
+      border and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and margins.</p>
+    <p>This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has
+      a border and some extra padding and margins.This container has a border and some extra padding
+      and margins.This container has a border and some extra padding and margins.This container has a
+      border and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and margins.</p>
+    <p>This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has
+      a border and some extra padding and margins.This container has a border and some extra padding
+      and margins.This container has a border and some extra padding and margins.This container has a
+      border and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and margins.</p>
+    <p>This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has
+      a border and some extra padding and margins.This container has a border and some extra padding
+      and margins.This container has a border and some extra padding and margins.This container has a
+      border and some extra padding and margins.This container has a border and some extra padding and
+      margins.This container has a border and some extra padding and margins.This container has a border
+      and some extra padding and margins.This container has a border and some extra padding and margins.</p>
+  </div>
+
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("CONTENT");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+  </script>
+  <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+
+
+
+  
+</html>
+{% endblock %}

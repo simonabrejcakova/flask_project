@@ -1,5 +1,5 @@
 body {
-    padding: 0 20%;
+    padding: 0 10%;
 }
 
 header {
@@ -78,5 +78,39 @@ footer {
     display: inline-block;
 }
 
+.pull-right {
+    float: right;
+}
 
 
+
+
+
+@media (max-width: 768px) {
+.img-responsive{
+ width: 300px;
+height:50px;
+padding-left:50px;
+}
+}
+@media (max-width: 376px) {
+.img-responsive{
+ width: 220px;
+ height:50px;
+ padding-left: 20px;
+}
+}
+@media (max-width: 286px) {
+.img-responsive{
+ width: 180px;
+ height:50px;
+ padding-left: 5px;
+ }
+.footer{
+ height: auto;
+ }
+ h4{
+ padding-top: 50px;
+ padding-left: 20px;
+ }
+ }

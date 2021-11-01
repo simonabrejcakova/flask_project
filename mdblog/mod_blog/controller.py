@@ -39,6 +39,14 @@ def view_manuals():
 def view_manual_barista():
     return render_template("mod_blog/barista.jinja",)
 
+@blog.route("/manuals/prisluha/")
+def view_manual_prisluha():
+    return render_template("mod_blog/prisluha.jinja",)
+
+@blog.route("/manuals/flyboy/")
+def view_manual_flyboy():
+    return render_template("mod_blog/flyboy.jinja",)
+
 
 @blog.route("/locations/", methods=["GET"])
 def view_locations():
