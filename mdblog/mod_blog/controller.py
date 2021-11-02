@@ -74,3 +74,7 @@ def view_mlynky():
 @blog.route("/kontakty/")
 def view_contact():
     return render_template("mod_blog/contact.jinja")
+
+@blog.route("/kalendar/")
+def view_calendar():
+    return render_template("mod_blog/calendar.jinja")

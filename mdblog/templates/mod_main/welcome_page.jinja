@@ -4,11 +4,18 @@
 
 
 {% block main %}
-   <blockquote class="blockquote">
-        <p class="mb-0">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-        <footer class=blockquote-footer> Someone famous </footer>
-    </blockquote>
+    <div class="container">
+        <div class="articles">
+    {% if session.ahoj%}
+    Ste prihlásený ako pužívateľ v BarISta.
+    {% elif session.logged%}
+    Ste prihlásený ako admin v BarISta.
+    {% else%}
+    Informačný systém pre baristov. Pre pokračovanie sa prosím prihláste.
+    <h3><a href={{ url_for("admin.view_login") }}>Login</a></h3>
+    {% endif %}
+        </div>
+</div>
+
     
-{% endblock %}
+{% endblock %}  

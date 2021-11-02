@@ -1,3 +1,6 @@
+
+
+{% if session.ahoj%}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid"></div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -5,23 +8,23 @@
     </button>
   <div class="collapse navbar-collapse" id="navbarNav">
 
-  {# USER OR ADMIN LOGIN#}
+        
     <ul class="navbar-nav">
-      {% if session.ahoj%}
-      <li class="nav-item">
-        <a style="display:none" class="nav-link active"  href={{ url_for("admin.view_login") }}>Login</a>
-      </li>
-      {% elif session.logged%}
-      <li class="nav-item">
-        <a style="display:none" class="nav-link active"  href={{ url_for("admin.view_login") }}>Login</a>
-      </li>
-      {% else%}
-      <li class="nav-item">
-        <a class="nav-link active"  href={{ url_for("admin.view_login") }}>Login</a>
-      </li> 
-      {% endif %}
+{% endif %}
 
 
+
+{% if session.logged%}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid"></div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+        
+    <ul class="navbar-nav">
+{% endif %}
 
 
   {# USER #}
@@ -39,6 +42,7 @@
           <li><a class="dropdown-item" href={{ url_for("blog.view_mlynky") }}>Mlýnky</a></li>
         </ul>
       </li>
+      <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_calendar") }}>Kalendár</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_contact") }}>Kontakty</a></li>
       <li class="nav-item"></li><a class="nav-link" href={{ url_for("admin.view_change_password_ahoj") }}>Change</a></li>
 
@@ -64,6 +68,7 @@
           <li><a class="dropdown-item" href={{ url_for("blog.view_mlynky") }}>Mlýnky</a></li>
         </ul>
       </li>
+      <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_calendar") }}>Kalendár</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_contact") }}>Kontakty</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_admin") }}>ADMIN</a></li>
 

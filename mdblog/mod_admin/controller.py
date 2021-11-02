@@ -107,9 +107,6 @@ def edit_article(art_id):
 
 
 #LOGIN,ChangePassword,Logout
-
-
-
 @admin.route("/login/", methods=["POST"])
 def login_user():
     login_form = LoginForm(request.form)
@@ -130,6 +127,9 @@ def login_user():
         for error in login_form.errors:
             flash("{} is missing".format(error), "alert-danger")
         return redirect(url_for("main.view_welcome_page"))
+
+
+
 
 @admin.route("/changepassword/", methods=["GET"])
 @login_required

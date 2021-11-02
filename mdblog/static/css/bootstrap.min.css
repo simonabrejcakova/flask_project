@@ -10,7 +10,7 @@
 /*#  button primary */
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: #E6BF83; border-color: #E6BF83    !important;
+    background-color: #e6c84f; border-color: #e6c84f    !important;
 }
 
 
@@ -28,7 +28,6 @@ ul.nav li a:hover, ul.nav li a:active {
 ul.nav li.active a {
     color: #E6BF83 !important;
 }
-
 
 
 
