@@ -10,24 +10,101 @@
 /*#  button primary */
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: #e6c84f; border-color: #e6c84f    !important;
+    background-color: #E6BF83; border-color: #E6BF83    !important;
+}
+
+.btn-logout {
+    color:#3b0626; border-color: #3b0626   !important;
+}
+
+.btn-logout:hover, .btn-primary:active {
+    color:#3b0626; border-color: #3b0626; background-color: white   !important;
 }
 
 
 /*# nav all posibiities  */
 
 
-ul.nav li a, ul.nav li a:visited {
-    color: #E6BF83 !important;
+
+
+
+.text-brown {
+    color: #3b0626 !important;
+  }
+
+h1 {
+    color: #3b0626 !important;
+  }
+
+h2 {
+    color: #3b0626 !important;
+  }
+
+h3 {
+    color: #3b0626 !important;
+  }
+
+h4 {
+    color: #3b0626 !important;
+  }
+
+.text-nude {
+    color: #c49e66 !important;
+  }
+
+.page-link {
+    color: #c49e66 !important;
+  }
+
+.page-link:hover {
+    color: #c49e66 !important;
+  }
+
+.page-link:visited {
+    color: #3b0626 !important;
+  }
+
+.custom-toggler.navbar-toggler {
+    border-color: #E6BF83
+    !important;
 }
 
-ul.nav li a:hover, ul.nav li a:active {
-    color: #C58917 !important;
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(59, 6, 38, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important
+    ;
+  }
+
+.navbar-custom {
+    background-color: #E6BF83
+    !important;
 }
 
-ul.nav li.active a {
-    color: #E6BF83 !important;
+.nav-link {
+    color: #3b0626;
+    padding-right: 40px
+    !important;
 }
+
+.nav-link:hover, .nav-link.active {
+    color: white
+    !important;
+}
+
+.dropdown-item {
+    background-color:white
+    !important;
+}
+
+a.dropdown-item {
+    color:#3b0626
+    !important;
+}
+
+a.nav-item{
+    color:#3b0626
+    !important;
+}
+
 
 
 
