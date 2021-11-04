@@ -28,7 +28,7 @@
         {# add previous button #}
         {% if paginate.has_prev %}
             <li class="page-item">
-                <a class="page-link" href={{url_for("blog.view_locations", page=paginate.prev_num)}} >Previous</a>
+                <a class="page-link text-nude" href={{url_for("blog.view_locations", page=paginate.prev_num)}} >Previous</a>
             </li>
         {% endif %}
 
@@ -37,7 +37,7 @@
         {%- for page in paginate.iter_pages() %}
             {% if page %}
                 {% if page != paginate.page %}
-                    <li class="page-item"> <a class="page-link" href={{ url_for("blog.view_locations", page=page) }}>{{page}}</a></li>
+                    <li class="page-item"> <a class="page-link text-nude" href={{ url_for("blog.view_locations", page=page) }}>{{page}}</a></li>
                 {% else %}
                     <li class="page-item disabled"><a class="page-link">{{ page }}</a></li>
                 {% endif %}
@@ -49,7 +49,7 @@
         {# add next button #}
         {% if paginate.has_next %}
             <li class="page-item">
-                <a class="page-link" href={{url_for("blog.view_locations", page=paginate.next_num)}} >Next</a>
+                <a class="page-link text-nude" href={{url_for("blog.view_locations", page=paginate.next_num)}} >Next</a>
             </li>
         {% endif %}
         </ul>

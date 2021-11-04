@@ -8,13 +8,6 @@
 
 <h2> Locations </h2>
 <a href={{ url_for(".view_add_location") }} role="button" class="btn btn-primary">Add new location</a>
-<button onclick="goBack()">Go Back</button>
-
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
 
 {# CREATE TABLE #}
 <table class="table table-sm">
@@ -47,7 +40,7 @@ function goBack() {
 {# add previous button #}
 {% if paginate.has_prev %}
     <li class="page-item">
-        <a class="page-link" href={{url_for(".view_location", page=paginate.prev_num)}} >Previous</a>
+        <a class="page-link text-nude" href={{url_for(".view_location", page=paginate.prev_num)}} >Previous</a>
     </li>
 {% endif %}
 
@@ -56,7 +49,7 @@ function goBack() {
 {%- for page in paginate.iter_pages() %}
     {% if page %}
         {% if page != paginate.page %}
-            <li class="page-item"> <a class="page-link" href={{ url_for(".view_location", page=page) }}>{{page}}</a></li>
+            <li class="page-item text-nude"> <a class="page-link" href={{ url_for(".view_location", page=page) }}>{{page}}</a></li>
         {% else %}
             <li class="page-item disabled"><a class="page-link">{{ page }}</a></li>
         {% endif %}
@@ -68,7 +61,7 @@ function goBack() {
 {# add next button #}
 {% if paginate.has_next %}
     <li class="page-item">
-        <a class="page-link" href={{url_for(".view_location", page=paginate.next_num)}} >Next</a>
+        <a class="page-link text-nude" href={{url_for(".view_location", page=paginate.next_num)}} >Next</a>
     </li>
 {% endif %}
 </ul>

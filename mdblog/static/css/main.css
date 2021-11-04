@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-    padding: 0 20%;
+    padding: 0 25%;
 }
 
 
@@ -88,7 +88,9 @@ footer {
 
 
 
-
+.btn-center {
+    text-align: center;
+}
 
 
 
@@ -104,6 +106,10 @@ padding-left: 5% !important;
 .btn-logout{
 margin-left: 4% !important;
 }
+.container {
+    padding: 0 10% !important;
+}
+
 }
 @media (max-width: 376px) {
 .img-responsive{

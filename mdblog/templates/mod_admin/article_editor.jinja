@@ -27,15 +27,8 @@
         {{ form.content() }}
     </div>
     {{ form.html_render() }}
-    <input type="submit" value="save">
+    <input class="btn btn-primary" type="submit" value="save">
 </form>
 
-<button onclick="goBack()">Go Back</button>
-
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
 
 {% endblock %}

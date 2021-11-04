@@ -52,17 +52,7 @@ h4 {
     color: #c49e66 !important;
   }
 
-.page-link {
-    color: #c49e66 !important;
-  }
 
-.page-link:hover {
-    color: #c49e66 !important;
-  }
-
-.page-link:visited {
-    color: #3b0626 !important;
-  }
 
 .custom-toggler.navbar-toggler {
     border-color: #E6BF83
@@ -104,7 +94,4 @@ a.nav-item{
     color:#3b0626
     !important;
 }
-
-
-
 
