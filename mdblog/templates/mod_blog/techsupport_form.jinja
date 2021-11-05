@@ -14,29 +14,31 @@
             <div class="row">
                 <div class="col-md-12">
                         <div class="tab-pane fade show active text-align form-new" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <h3 class="register-heading style=">Technická podpora</h3>
+                            <h3>Technická podpora</h3>
                             <div class="row register-form">
                                 <div class="col-md-12">
                                     <form method="post" autocomplete="off" name="google-sheet">
-                                        <span>POPIS ZÁVADY/PROBLÉMU</span>
+                                        <span class="text-brown"><b>POPIS ZÁVADY/PROBLÉMU</b></span>
                                         <div class="form-group">
-                                            <input type="text" name="ZÁVADA" class="form-control" placeholder="" value="" required=""/>
+                                            <input type="text" name="ZÁVADA" class="form-control text-brown" placeholder="" value="" required=""/>
                                         </div>
                                         <div class="form-group">
-                                        <span>NALÉHAVOST</span>
-                                            <input type="text" name="NALÉHAVOST" class="form-control" placeholder="ASAP/Štandard/Počká " value="" required=""/>
+                                        <span class="text-brown"><b>NALÉHAVOST</b></span>
+                                        <small><span class="text-nude" style="font-style:italic";>ASAP - Havárie, Rýchlo - do 2 dní, Počká - týždeň</span></small>
+                                            <input type="text" name="NALÉHAVOST" class="form-control text-brown" placeholder="ASAP/Rýchlo/Počká " value="" required=""/>
                                         </div>
-                                        <span>EVIDENČNÉ/VÝROBNÉ ČÍSLO</span>
+                                        <span class="text-brown"><b>EVIDENČNÉ/VÝROBNÉ ČÍSLO</b></span>
+                                        <small><span class= "text-nude" style="font-style:italic";>Kofitruck (pohon, pojezd) - spredu na KT, Kávovar - ľavá tryska, Mlýnek - spredu mlýnka</span></small>
                                         <div class="form-group">
-                                            <input type="number" name="ČÍSLO" class="form-control" placeholder="Uvedené na mosadznej tabulke" value="" required=""/>
+                                            <input type="number" name="ČÍSLO" class="form-control text-brown" placeholder="Mosadzná tabuľka" value="" required=""/>
                                         </div>
-                                        <span>TRUCK</span>
+                                        <span class="text-brown"><b>TRUCK</b></span>
                                         <div class="form-group">
-                                            <input type="text" name="UMÍSTNENÍ" class="form-control" placeholder="Česká/Hlavák/Šili/.. " value="" required=""/>
+                                            <input type="text" name="UMÍSTNENÍ" class="form-control text-brown" placeholder="Česká/Hlavák/Šili/.. " value="" required=""/>
                                         </div>
-                                        <span>KOFIPEOPLE</span>
+                                        <span class="text-brown"><b>KOFIPEOPLE</b></span>
                                         <div class="form-group">
-                                            <input type="text" name="KOFIPEOPLE" class="form-control" placeholder="Jméno " value="" required=""/>
+                                            <input type="text" name="KOFIPEOPLE" class="form-control text-brown" placeholder="Jméno " value="" required=""/>
                                         </div>
                                         <div class="form-group">
                                             <div class="btn-center">
@@ -52,7 +54,7 @@
         </div>
           
           <script>
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbwukCEdQ1-qQGxZMLe_dlevxvr5AlLzfy_yTvo9kJy4fusE7fOR/exec'
+            const scriptURL = "https://script.google.com/macros/s/AKfycbwukCEdQ1-qQGxZMLe_dlevxvr5AlLzfy_yTvo9kJy4fusE7fOR/exec"
             const form = document.forms['google-sheet']
           
             form.addEventListener('submit', e => {
