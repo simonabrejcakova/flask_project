@@ -20,29 +20,29 @@
                                     <form method="post" autocomplete="off" name="google-sheet">
                                         <span class="text-brown"><b>POPIS ZÁVADY/PROBLÉMU</b></span>
                                         <div class="form-group">
-                                            <input type="text" name="ZÁVADA" class="form-control text-brown" placeholder="" value="" required=""/>
+                                            <input id= "popis" type="text" name="ZÁVADA" class="form-control text-brown" placeholder="" value="" required=""/>
                                         </div>
                                         <div class="form-group">
                                         <span class="text-brown"><b>NALÉHAVOST</b></span>
                                         <small><span class="text-nude" style="font-style:italic";>ASAP - Havárie, Rýchlo - do 2 dní, Počká - týždeň</span></small>
-                                            <input type="text" name="NALÉHAVOST" class="form-control text-brown" placeholder="ASAP/Rýchlo/Počká " value="" required=""/>
+                                            <input id="nalehavost" type="text" name="NALÉHAVOST" class="form-control text-brown" placeholder="ASAP/Rýchlo/Počká " value="" required=""/>
                                         </div>
                                         <span class="text-brown"><b>EVIDENČNÉ/VÝROBNÉ ČÍSLO</b></span>
                                         <small><span class= "text-nude" style="font-style:italic";>Kofitruck (pohon, pojezd) - spredu na KT, Kávovar - ľavá tryska, Mlýnek - spredu mlýnka</span></small>
                                         <div class="form-group">
-                                            <input type="number" name="ČÍSLO" class="form-control text-brown" placeholder="Mosadzná tabuľka" value="" required=""/>
+                                            <input id="cislo" type="number" name="ČÍSLO" class="form-control text-brown" placeholder="Mosadzná tabuľka" value="" required=""/>
                                         </div>
                                         <span class="text-brown"><b>TRUCK</b></span>
                                         <div class="form-group">
-                                            <input type="text" name="UMÍSTNENÍ" class="form-control text-brown" placeholder="Česká/Hlavák/Šili/.. " value="" required=""/>
+                                            <input id= "truck" type="text" name="UMÍSTNENÍ" class="form-control text-brown" placeholder="Česká/Hlavák/Šili/.. " value="" required=""/>
                                         </div>
                                         <span class="text-brown"><b>KOFIPEOPLE</b></span>
                                         <div class="form-group">
-                                            <input type="text" name="KOFIPEOPLE" class="form-control text-brown" placeholder="Jméno " value="" required=""/>
+                                            <input id="kofipeople" type="text" name="KOFIPEOPLE" class="form-control text-brown" placeholder="Jméno " value="" required=""/>
                                         </div>
                                         <div class="form-group">
                                             <div class="btn-center">
-                                            <input type="submit" name="submit" class="btn btn-primary" value="ODOSLAŤ" />
+                                            <input type="submit" name="submit" class="btn btn-primary" value="ODOSLAŤ" onclick="gotowhatsapp()"/>
                                             </div>
                                         </div>
                                     </form>
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-          
+         
           <script>
             const scriptURL = "https://script.google.com/macros/s/AKfycbwukCEdQ1-qQGxZMLe_dlevxvr5AlLzfy_yTvo9kJy4fusE7fOR/exec"
             const form = document.forms['google-sheet']
@@ -67,6 +67,43 @@
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+        <script>
+            function gotowhatsapp() {
+                
+                var popis = document.getElementById("popis").value;
+                var nalehavost = document.getElementById("nalehavost").value;
+                var cislo = document.getElementById("cislo").value;
+                var truck = document.getElementById("truck").value;
+                var kofipeople = document.getElementById("kofipeople").value;
+            
+                var url = "https://wa.me/421904608008?text=" 
+                + "Popis: " + popis + "%0a"
+                + "Naliehavosť: " + nalehavost + "%0a"
+                + "Evidenčné číslo: " + cislo  + "%0a"
+                + "Truck: " + truck + "%0a"
+                + "Kofipeople: " + kofipeople;
+            
+                window.open(url, '_blank').focus();
+            }
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 {% endblock %}

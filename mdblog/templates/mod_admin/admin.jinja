@@ -7,17 +7,18 @@
     <div class="articles">
         <article class="media pt-3">
             <div class="media-body ">
-                <h2> Settings </h2>
-                <p><a class="text-nude" href={{ url_for("admin.view_change_password") }}>Change password</a></p>
-                <p><a class="text-nude" href={{ url_for("admin.view_article") }}>See FAQ</a></p>
-                <p><a class="text-nude" href={{ url_for("admin.view_location") }}>See locations</a></p>
+                <h2> Nastavenia </h2>
+                <p><a class="text-nude" href={{ url_for("admin.view_article") }}>Editovať FAQ</a></p>
+                <p><a class="text-nude" href={{ url_for("admin.view_location") }}>Editovať lokácie</a></p>
                 <p><a class="text-nude" href={{ url_for("admin.view_google_sheets") }}>Technická podpora
                         výsledky</a></p>
-                <p><a class="text-nude" href={{ url_for("admin.new_user") }}>new user</a></p>
-                <hr />
-
+                <p><a class="text-nude" href={{ url_for("admin.new_user") }}>Pridať nového používateľa</a></p>
+                <p><a class="text-nude" href={{ url_for("admin.view_change_password") }}>Zmena hesla</a></p>
+                
             </div>
         </article>
     </div>
 </div>
+
+
 {% endblock %}

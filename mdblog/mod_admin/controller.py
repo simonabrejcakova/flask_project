@@ -12,7 +12,6 @@ from mdblog.models import Location
 from mdblog.models import Article
 from mdblog.models import User
 
-
 from .forms import ArticleForm
 from .forms import LocationForm
 from .forms import ChangePasswordForm
@@ -106,6 +105,7 @@ def edit_article(art_id):
             return redirect(url_for("admin.view_login"))
 
 
+
 #LOGIN,ChangePassword,Logout
 @admin.route("/login/", methods=["POST"])
 def login_user():
@@ -127,8 +127,6 @@ def login_user():
         for error in login_form.errors:
             flash("{} is missing".format(error), "alert-danger")
         return redirect(url_for("main.view_welcome_page"))
-
-
 
 
 @admin.route("/changepassword/", methods=["GET"])
@@ -361,7 +359,5 @@ def delete_article(art_id):
     
     except:
         return render_template("errors/500.jinja")
-
-
 
 

@@ -14,6 +14,9 @@ from mdblog.models import User
 blog = Blueprint("blog", __name__)
 
 
+
+
+
 @blog.route("/articles/", methods=["GET"])
 def view_articles():
     page = request.args.get("page", 1, type=int)
@@ -51,7 +54,7 @@ def view_manual_flyboy():
 @blog.route("/locations/", methods=["GET"])
 def view_locations():
     page = request.args.get("page", 1, type=int)
-    paginate = Location.query.order_by(Location.id.desc()).paginate(page, 5, False)
+    paginate = Location.query.order_by(Location.id.desc()).paginate(page, 10, False)
     return render_template("mod_blog/locations.jinja",
             locations=paginate.items,
             paginate=paginate)
