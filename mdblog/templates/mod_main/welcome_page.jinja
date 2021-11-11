@@ -9,10 +9,10 @@
         <article class="media pt-3">
             <div class="media-body ">
                     {% if session.ahoj%}
-                    Ste prihlásený ako pužívateľ v BarISta.
+                    {{session['ahoj']}}
                     
                     {% elif session.logged%}
-                    Ste prihlásený ako admin v BarISta.
+                    {{session['logged']}}
                     {% else%}
                     Informačný systém pre baristov. Pre pokračovanie sa prosím prihláste:
                     <b><a class="text-brown" href={{ url_for("admin.view_login") }}>  Login</a></b>

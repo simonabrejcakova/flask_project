@@ -7,10 +7,11 @@ from flask import session
 from flask import flash
 from werkzeug.security import generate_password_hash
 
-from mdblog.models import db
+from mdblog.models import Shifts, db
 from mdblog.models import Location
 from mdblog.models import Article
 from mdblog.models import User
+from mdblog.models import Shift
 
 from .forms import ArticleForm
 from .forms import LocationForm
@@ -127,6 +128,8 @@ def login_user():
         for error in login_form.errors:
             flash("{} is missing".format(error), "alert-danger")
         return redirect(url_for("main.view_welcome_page"))
+
+
 
 
 @admin.route("/changepassword/", methods=["GET"])
@@ -361,3 +364,12 @@ def delete_article(art_id):
         return render_template("errors/500.jinja")
 
 
+
+
+@admin.route("/shifts/", methods=["GET"])
+def view_shifts():
+    page = request.args.get("page", 1, type=int)
+    paginate = Shift.query.order_by(Shift.id.asc()).paginate(page, 30, False)
+    return render_template("mod_blog/smeny.jinja",
+            shifts=paginate.items,
+            paginate=paginate)

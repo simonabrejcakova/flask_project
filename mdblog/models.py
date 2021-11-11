@@ -41,3 +41,22 @@ class Location(db.Model):
     title = db.Column(db.String)
     content = db.Column(db.String)
     html_render = db.Column(db.String)
+
+
+class Shifts(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username= db.Column(db.String)
+    truck= db.Column(db.String)
+    date= db.Column(db.String)
+    start_time= db.Column(db.String)
+    end_time= db.Column(db.String)
+    notes=db.Column(db.String)
+
+class Shift(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username= db.Column(db.String)
+    truck= db.Column(db.String)
+    date= db.Column(db.String)
+    start_time= db.Column(db.String)
+    end_time= db.Column(db.String)
+    notes=db.Column(db.String)

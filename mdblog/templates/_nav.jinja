@@ -15,6 +15,7 @@
 
 
       {% if session.ahoj%}
+      <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_shifts") }}>Smeny</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_locations") }}>Lokácie</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_articles") }}>FAQ</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_manuals") }}>Manuále</a></li>
@@ -31,7 +32,7 @@
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_calendar") }}>Kalendár</a></li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Užívateľ</a>
+          {{session['ahoj']}}</a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <li><a class="nav-item"></li><a class="nav-link" href={{ url_for("admin.view_change_password_ahoj") }}>Zmena hesla</a></li>
           <li><a class="nav-item">
@@ -62,6 +63,7 @@
 
 
       {% if session.logged%}
+      <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_shifts") }}>Smeny</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_locations") }}>Lokácie</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_articles") }}>FAQ</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_manuals") }}>Manuále</a></li>

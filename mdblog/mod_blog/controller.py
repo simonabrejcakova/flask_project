@@ -1,10 +1,11 @@
 from flask import Blueprint
 from flask import render_template
 from flask import request
+from flask.globals import session
 
 
 from mdblog.models import Article
-from mdblog.models import Manual
+
 from mdblog.models import Location
 from mdblog.models import User
 
@@ -12,8 +13,6 @@ from mdblog.models import User
 
 
 blog = Blueprint("blog", __name__)
-
-
 
 
 
