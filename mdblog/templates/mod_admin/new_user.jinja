@@ -3,11 +3,10 @@
 {% block title %} new user {% endblock %}
 
 {% block main %}
-
+<br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6">
-            <p><h5 class="text-brown">Nový užívateľ</h5></p>
             <form action="{{url_for("admin.new_user")}}", method=post>
                 {{ form.csrf_token }}
                 <div class="form-group">

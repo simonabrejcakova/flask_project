@@ -373,3 +373,5 @@ def view_shifts():
     return render_template("mod_blog/smeny.jinja",
             shifts=paginate.items,
             paginate=paginate)
+
+

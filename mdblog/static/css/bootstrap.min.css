@@ -76,9 +76,11 @@ h6 {
 
 .nav-link {
     color: #3b0626;
-    padding-right: 40px
+    padding-right: 30px
     !important;
 }
+
+
 
 .nav-link:hover, .nav-link.active {
     color: white

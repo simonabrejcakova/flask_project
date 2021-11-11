@@ -55,6 +55,7 @@ class Shifts(db.Model):
 class Shift(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username= db.Column(db.String)
+    typ=db.Column(db.String)
     truck= db.Column(db.String)
     date= db.Column(db.String)
     start_time= db.Column(db.String)
