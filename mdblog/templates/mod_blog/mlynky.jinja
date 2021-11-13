@@ -30,7 +30,17 @@
                                         <div class="form-group">
                                             <input type="number" name="DC" class="form-control text-brown" placeholder="" value="" required=""/>
                                         </div>
-
+                                        {% if session.ahoj%}
+                                        <span class="text-brown"><b>KOFIPEOPLE</b></span>
+                                        <div class="form-group">
+                                            <input id="kofipeople" type="text" name="KOFIPEOPLE" class="form-control text-brown" value= {{session['ahoj']}}  readonly/>
+                                        </div>
+                                        {% else %}
+                                        <span class="text-brown"><b>KOFIPEOPLE</b></span>
+                                        <div class="form-group">
+                                            <input id="kofipeople" type="text" name="KOFIPEOPLE" class="form-control text-brown" value= {{session['logged']}}  readonly/>
+                                        </div>
+                                        {% endif %}
                                         <div class="form-group">
                                             <div class="btn-center">
                                             <input type="submit" name="submit" class="btn btn-primary" value="ODOSLAŤ" />
