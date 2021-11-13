@@ -375,3 +375,15 @@ def view_shifts():
             paginate=paginate)
 
 
+@admin.route("/shifts/<int:shi_id>/", methods=['GET', 'POST'])
+def submit_shift(shi_id):
+    shift = Shift.query.filter_by(id=shi_id).first()
+    try:
+        data= "OK"
+        shift.notes =data
+        db.session.add(shift)
+        db.session.commit()
+        flash ("vse ok", "alert-success")
+        return redirect(url_for("admin.view_shifts"))
+    except:
+        return render_template("errors/500.jinja")

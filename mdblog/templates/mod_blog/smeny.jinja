@@ -7,15 +7,18 @@
 
 {% block main %}
 <br>
-<table class="table table-sm">
+<div class="my-table">
+<div class="row justify-content-center">
+<table style='font-size:70%' class="table table-sm" >
     <thead>
         <tr>
-            {% if session.logged%}<th id="meno" scope="col">Meno</th> {% endif %}
+            {% if session.logged%}<th scope="col">Meno</th> {% endif %}
             <th scope="col">Truck</th>
             <th scope="col">Typ</th>
             <th scope="col">Dátum</th>
             <th scope="col">OD</th>
             <th scope="col">DO</th>
+            <th scope="col">Potvrdenie</th>
         </tr>
     </thead>
     <tbody>
@@ -24,29 +27,47 @@
         {% if session.ahoj==shift.username%}
         <tr>
             <th>{{ shift.truck}}</td>
-            <td>{{ shift.typ}}</td>  
+            <td>{{ shift.typ}}</td>
             <td>{{ shift.date}}</td>
             <td>{{ shift.start_time}}</td>
             <td>{{ shift.end_time}}</td>
+            {% if shift.notes== "OK"%}
+            <td><img alt="ok" src="/static/img/ok1.jpg" style="width:20px;height:20px; margin-left:22px"></td>
+            {% else%}
+            <td> <a style="font-size: 9px; text-decoration: none; padding:3px; margin-left:6px" href={{ url_for("admin.submit_shift", shi_id=shift.id) }} class="btn btn-primary"> POTVRDIŤ
+                </a>
+            </td>
+            {% endif %}
         </tr>
 
         {% elif session.logged%}
         <tr>
             <th>{{ shift.username}}</th>
             <td>{{ shift.truck}}</td>
-            <td>{{ shift.typ}}</td>  
+            <td>{{ shift.typ}}</td>
             <td>{{ shift.date}}</td>
             <td>{{ shift.start_time}}</td>
             <td>{{ shift.end_time}}</td>
+            {% if shift.notes== "OK"%}
+            <td><img alt="ok" src="/static/img/ok1.jpg" style="width:20px;height:20px; margin-left:20px"></td>
+            {% else%}
+            <td><img alt="ok" src="/static/img/nok1.jpg" style="width:20px;height:20px;margin-left:20px"></td>
+            {% endif %}
+
+           
             {% else%}
 
             {% endif %}
+        </tr>
 
-            {% endfor %}
+
+
+        {% endfor %}
     </tbody>
 </table>
 </div>
 </div>
+
 
 
 
