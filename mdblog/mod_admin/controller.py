@@ -59,7 +59,7 @@ def add_article():
                 html_render = add_form.html_render.data)
         db.session.add(new_article)
         db.session.commit()
-        flash("Article was saved", "alert-success")
+        flash("Príspevok uložený", "alert-success")
 
         article_url = url_for("blog.view_article", art_id = new_article.id)
         article_url = request.url_root + article_url[1:]
@@ -70,7 +70,7 @@ def add_article():
         return redirect(url_for("blog.view_articles"))
     else:
         for error in add_form.errors:
-            flash("{} is required".format(error), "alert-danger")
+            flash("{} je povinné".format(error), "alert-danger")
         return render_template("mod_admin/article_editor.jinja", form=add_form)
 
 
@@ -98,11 +98,11 @@ def edit_article(art_id):
             article.html_render = edit_form.html_render.data
             db.session.add(article)
             db.session.commit()
-            flash("Edit saved", "alert-success")
+            flash("Zmena uložená", "alert-success")
             return redirect(url_for("blog.view_article", art_id=art_id))
         else:
             for error in login_form.errors:
-                flash("{} is missing".format(error), "alert-danger")
+                flash("{} je povinné".format(error), "alert-danger")
             return redirect(url_for("admin.view_login"))
 
 
@@ -115,18 +115,18 @@ def login_user():
         user = User.query.filter_by(username = login_form.username.data).first()
         if user and user.check_password(login_form.password.data) and user.id==1:
             session["logged"] = user.username
-            flash("Login successful", "alert-success")
-            return redirect(url_for("admin.view_admin"))
+            flash("Prihlásenie admina úspešné", "alert-success")
+            return redirect(url_for("main.view_welcome_page"))
         elif user and user.check_password(login_form.password.data) and user.id!=1:
             session["ahoj"]=user.username
-            flash("Login user successful", "alert-success")
-            return redirect(url_for("blog.view_articles"))
+            flash("Prihlásenie používateľa úspešné", "alert-success")
+            return redirect(url_for("main.view_welcome_page"))
         else:
-            flash("Invalid credentials", "alert-danger")
+            flash("Nesprávne používateľské meno alebo heslo!", "alert-danger")
             return render_template("mod_admin/login.jinja", form=login_form)
     else:
         for error in login_form.errors:
-            flash("{} is missing".format(error), "alert-danger")
+            flash("{} chýba".format(error), "alert-danger")
         return redirect(url_for("main.view_welcome_page"))
 
 
@@ -148,14 +148,14 @@ def change_password():
             user.set_password(form.new_password.data)
             db.session.add(user)
             db.session.commit()
-            flash("Password changed!", "alert-success")
+            flash("Heslo zmenené!", "alert-success")
             return redirect(url_for("admin.view_admin"))
         else:
-            flash("Invalid credentials", "alert-danger")
+            flash("Pôvodné heslo nie je správne", "alert-danger")
             return render_template("mod_admin/change_password.jinja", form=form)
     else:
         for error in form.errors:
-            flash("{} is missing".format(error), "alert-danger")
+            flash("{} chýba".format(error), "alert-danger")
         return render_template("mod_admin/change_password.jinja", form=form)
 
 
@@ -180,14 +180,14 @@ def change_password_ahoj():
             user.set_password(form.new_password.data)
             db.session.add(user)
             db.session.commit()
-            flash("Password changed!", "alert-success")
+            flash("Heslo zmenené!", "alert-success")
             return redirect(url_for("main.view_welcome_page"))
         else:
-            flash("Invalid credentials", "alert-danger")
+            flash("Pôvodné heslo nie je správne", "alert-danger")
             return render_template("mod_admin/change_password_ahoj.jinja", form=form)
     else:
         for error in form.errors:
-            flash("{} is missing".format(error), "alert-danger")
+            flash("{} chýba".format(error), "alert-danger")
         return render_template("mod_admin/change_password_ahoj.jinja", form=form)
 
 
@@ -207,7 +207,7 @@ def new_user():
 
         db.session.add(new_user)
         db.session.commit()
-        flash("User created", "alert-success")
+        flash("Nový používateľ vytvorený", "alert-success")
         return redirect(url_for("admin.view_admin"))
         
     else:
@@ -218,7 +218,7 @@ def new_user():
 @login_required
 def logout_user():
     session.pop("logged") 
-    flash("Logout successful", "alert-success")
+    flash("Admin odhlásený", "alert-success")
     return redirect(url_for("main.view_welcome_page"))
 
 
@@ -226,7 +226,7 @@ def logout_user():
 @login_required1
 def logout_user_ahoj():
     session.pop("ahoj") 
-    flash("Logout successful", "alert-success")
+    flash("Používateľ odhlásený", "alert-success")
     return redirect(url_for("main.view_welcome_page"))
 
 
@@ -286,13 +286,13 @@ def add_location():
                 html_render = add_form.html_render.data)
         db.session.add(new_location)
         db.session.commit()
-        flash("Location was saved", "alert-success")
+        flash("Lokácia uložená", "alert-success")
 
 
         return redirect(url_for("blog.view_locations"))
     else:
         for error in add_form.errors:
-            flash("{} is required".format(error), "alert-danger")
+            flash("{} je povinné".format(error), "alert-danger")
         return render_template("mod_admin/location_editor.jinja", form=add_form)
 
 
@@ -320,11 +320,11 @@ def edit_location(loc_id):
             location.html_render = edit_form.html_render.data
             db.session.add(location)
             db.session.commit()
-            flash("Edit saved", "alert-success")
+            flash("Zmena uložená", "alert-success")
             return redirect(url_for("blog.view_location", loc_id=loc_id))
         else:
             for error in login_form.errors:
-                flash("{} is missing".format(error), "alert-danger")
+                flash("{} je povinné".format(error), "alert-danger")
             return redirect(url_for("admin.view_login"))
 
 
@@ -341,7 +341,7 @@ def delete_location(loc_id):
     try:
         db.session.delete(location)
         db.session.commit()
-        flash("Location deleted", "alert-success")
+        flash("Lokácia vymazaná", "alert-success")
         return redirect(url_for("admin.view_location"))
     
     except:
@@ -357,7 +357,7 @@ def delete_article(art_id):
     try:
         db.session.delete(article)
         db.session.commit()
-        flash("Article deleted", "alert-success")
+        flash("Príspevok vymazaný", "alert-success")
         return redirect(url_for("admin.view_article"))
     
     except:
@@ -376,6 +376,7 @@ def view_shifts():
 
 
 @admin.route("/shifts/<int:shi_id>/", methods=['GET', 'POST'])
+@login_required1
 def submit_shift(shi_id):
     shift = Shift.query.filter_by(id=shi_id).first()
     try:
@@ -383,7 +384,7 @@ def submit_shift(shi_id):
         shift.notes =data
         db.session.add(shift)
         db.session.commit()
-        flash ("vse ok", "alert-success")
+        flash ("Smena potvrdená", "alert-success")
         return redirect(url_for("admin.view_shifts"))
     except:
         return render_template("errors/500.jinja")

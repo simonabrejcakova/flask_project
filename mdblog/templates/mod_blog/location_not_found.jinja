@@ -1,6 +1,6 @@
 {% extends "_main.jinja" %}
 
-{% block title %} Location not found {% endblock %}
+{% block title %} Lokácia nenájdená {% endblock %}
 
 
 {% block main %}
@@ -8,13 +8,13 @@
     <div class="col-md-12">
         <div class="error-template">
             <h1>Oops!</h1>
-            <h2>This article doesn't exists</h2>
+            <h2>Lokácia neexistuje</h2>
             <div class="error-details">
-                Unfortunately this manual doens't exists :(
+                Bohužiaľ, táto lokácia nebola nájdená :(
             </div>
             <div class="error-actions">
-                <a href="/" class="btn btn-primary btn-lg"> Home </a>
-                <a href={{ url_for("blog.view_locations") }} class="btn btn-default btn-lg">All locations</a>
+                <a href="/" class="btn btn-primary btn-lg"> Späť </a>
+                <a href={{ url_for("blog.view_locations") }} class="btn btn-default btn-lg">Všetky lokácie</a>
             </div>
         </div>
     </div>

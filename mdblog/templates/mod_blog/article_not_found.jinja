@@ -1,6 +1,6 @@
 {% extends "_main.jinja" %}
 
-{% block title %} Article not found {% endblock %}
+{% block title %} Príspevok nebol nájdený {% endblock %}
 
 
 {% block main %}
@@ -8,13 +8,13 @@
     <div class="col-md-12">
         <div class="error-template">
             <h1>Oops!</h1>
-            <h2>This article doesn't exists</h2>
+            <h2>Príspevok neexistuje</h2>
             <div class="error-details">
-                Unfortunately this article doens't exists :(
+                Bohužiaľ, tento príspevok nebol nájdený :( 
             </div>
             <div class="error-actions">
-                <a href="/" class="btn btn-primary btn-lg"> Home </a>
-                <a href={{ url_for("blog.view_articles") }} class="btn btn-default btn-lg">All articles</a>
+                <a href="/" class="btn btn-primary btn-lg"> Späť </a>
+                <a href={{ url_for("blog.view_articles") }} class="btn btn-default btn-lg">Všetky príspevky</a>
             </div>
         </div>
     </div>

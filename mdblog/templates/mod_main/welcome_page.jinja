@@ -1,24 +1,32 @@
 {% extends "_main.jinja" %}
 
-{% block title %} Welcome to Markdown blog {% endblock %}
+{% block title %} barISta {% endblock %}
 
 
 {% block main %}
 <div class="container">
     <div class="articles">
+
         <article class="media pt-3">
             <div class="media-body ">
-                    {% if session.ahoj%}
-                    {{session['ahoj']}}
-                    
-                    {% elif session.logged%}
-                    {{session['logged']}}
-                    {% else%}
-                    Informačný systém pre baristov. Pre pokračovanie sa prosím prihláste:
-                    <b><a class="text-brown" href={{ url_for("admin.view_login") }}>  Login</a></b>
-                    {% endif %}         
+                {% if session.ahoj%}
+                <p style="text-align:center;" class="text-brown">Vitaj <b class="text-nude">{{session['ahoj']}}</b>  
+                    <p style="text-align:center;" class="text-brown"><i>Informačný systém spoločnosti KOFI-KOFI s.r.o. pre baristov, prísluhu 
+                a flyboy.</i></p> 
+                </p>
+
+                {% elif session.logged%}
+                <p style="text-align:center;" class="text-brown">Vitaj <b class="text-nude">{{session['logged']}}</b>  
+                    <p style="text-align:center;" class="text-brown"><i> Ste prihlásený ako admin v informačnom systéme spoločnosti KOFI-KOFI s.r.o. pre baristov, prísluhu 
+                a flyboy.</i></p> 
+                </p>
+                {% else%}
+                Informačný systém pre baristov. Pre pokračovanie sa prosím prihláste:
+                <b><a class="text-brown" href={{ url_for("admin.view_login") }}> Login</a></b>
+                {% endif %}
             </div>
         </article>
+
     </div>
 </div>
 {% endblock %}

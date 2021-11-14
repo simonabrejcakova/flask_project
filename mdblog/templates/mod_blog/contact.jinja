@@ -3,25 +3,52 @@
 {% block title %} Kontakty {% endblock %}
 
 {% block main %}
+{# search container #}
+<p>
 <div class="container">
-    <div class="articles">
-        <article class="media pt-3">
-            <div class="media-body ">
-                <h3 class="mt-0">
-                    <h4> Vedoucí dne </h4>
-                    <p> <a class="text-nude" href="tel:+420772356722"> Volej 772356722</a>
-                    <h6> Technická podpora </h6>
-                    <p> <a class="text-nude" href="tel:+420772356724"> Volej 772356724</a>
-                    <h6> Provozní </h6>
-                    <p> <a class="text-nude" href="tel:+420772356721"> Volej 772356721</a>
-                    <h6> Storyous </h6>
-                    <p>Problémy s aplikáciou:
-                    <p> <a class="text-nude" href="tel:+420777100200"> Volej 777100200</a>
-                    <h6> ČSOB terminály </h6>
-                    <p>Problém s terminálom:
-                    <p> <a class="text-nude" href="tel:+420777609909"> Volej 777609909</a>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <input type="text" id="search" class="form-control" placeholder="Meno">
+            <input type="hidden" id="hid_search" class="form-control">
+            <div class="btn-center">
+                <button class="btn btn-primary" type="submit" id="button"
+                    onmousedown="doSearch(document.getElementById('search').value)" value="Find">Hľadaj</button>
             </div>
+        </div>
     </div>
+</div>
+</p>
 
-  
-    {% endblock %}
+<div class="text-brown">
+    <h4>Provoz</h4>
+    Vedoucí dne: <a class="text-nude" href="tel:+420772356722"> Volej 772356722</a>
+    <br> Technická podpora: <a class="text-nude" href="tel:+420772356724"> Volej 772356724</a>
+    <br> Provozní oddelení: <a class="text-nude" href="tel:+420772356721"> Volej 772356721</a>
+    <br> Storoyous (aplikácia): <a class="text-nude" href="tel:+420777100200"> Volej 777100200</a>
+    <br> ČSOB (terminále): <a class="text-nude" href="tel:+420777609909"> Volej 777609909</a>
+
+    <p>
+    <h4>Kofipeople</h4>
+    </p>
+    Abrahámová A.<a class="text-nude" href="tel:+420772256722"> 772256722</a>
+    <br> Alexová J. <a class="text-nude" href="tel:+420772356724"> 772356724</a>
+    <br> Brusinská L.<a class="text-nude" href="tel:+420722356721"> 722356721</a>
+    <br> Božetechová S.<a class="text-nude" href="tel:+420717100200"> 717100200</a>
+    <br> Dokerová V. <a class="text-nude" href="tel:+421909090911"> +421909090911</a>
+    <br>..
+    <br>..
+    <br>..  
+    <br>..  
+    
+</div>
+
+
+
+
+
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>
+
+
+
+
+{% endblock %}

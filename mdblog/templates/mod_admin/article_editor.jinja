@@ -1,6 +1,6 @@
 {% extends "_main.jinja" %}
 
-{% block title %} New Article {% endblock %}
+{% block title %} Editácia príspevku {% endblock %}
 
 {% block head %}
     {{ super() }}
@@ -27,7 +27,7 @@
         {{ form.content() }}
     </div>
     {{ form.html_render() }}
-    <input class="btn btn-primary" type="submit" value="save">
+    <input class="btn btn-primary" type="submit" value="Uložiť">
 </form>
 
 

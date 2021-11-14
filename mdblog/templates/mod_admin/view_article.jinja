@@ -1,6 +1,6 @@
 {% extends "_main.jinja" %}
 
-{% block title %} manuals {% endblock %}
+{% block title %} Editácia príspevkov {% endblock %}
 
 {% block main %}
 
@@ -43,7 +43,7 @@
 {# add previous button #}
 {% if paginate.has_prev %}
     <li class="page-item">
-        <a class="page-link text-nude" href={{url_for(".view_article", page=paginate.prev_num)}} >Previous</a>
+        <a class="page-link text-nude" href={{url_for(".view_article", page=paginate.prev_num)}} >Predošlá</a>
     </li>
 {% endif %}
 
@@ -64,7 +64,7 @@
 {# add next button #}
 {% if paginate.has_next %}
     <li class="page-item">
-        <a class="page-link text-nude" href={{url_for(".view_article", page=paginate.next_num)}} >Next</a>
+        <a class="page-link text-nude" href={{url_for(".view_article", page=paginate.next_num)}} >Nasledujúca</a>
     </li>
 {% endif %}
 </ul>

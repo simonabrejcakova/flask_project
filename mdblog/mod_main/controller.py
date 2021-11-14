@@ -20,10 +20,10 @@ def add_newsletter():
         newsletter = Newsletter(email=newsletter_form.email.data)
         db.session.add(newsletter)
         db.session.commit()
-        flash("You were successfully subscribed", "alert-success")
+        flash("Váš e-mail je prihlásený na odber nových príspevkov.", "alert-success")
     else:
         for error in newsletter_form.errors:
-            flash("{} is not valid".format(error), "alert-danger")
+            flash("{} nesprávny formát".format(error), "alert-danger")
     return redirect(url_for("main.view_welcome_page"))
 
 @main.route("/")
