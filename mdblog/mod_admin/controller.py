@@ -59,7 +59,7 @@ def add_article():
                 html_render = add_form.html_render.data)
         db.session.add(new_article)
         db.session.commit()
-        flash("Príspevok uložený", "alert-success")
+        flash("Article was saved", "alert-success")
 
         article_url = url_for("blog.view_article", art_id = new_article.id)
         article_url = request.url_root + article_url[1:]
@@ -70,8 +70,9 @@ def add_article():
         return redirect(url_for("blog.view_articles"))
     else:
         for error in add_form.errors:
-            flash("{} je povinné".format(error), "alert-danger")
+            flash("{} is required".format(error), "alert-danger")
         return render_template("mod_admin/article_editor.jinja", form=add_form)
+
 
 
 @admin.route("/articles/<int:art_id>/edit/", methods=["GET"])
@@ -98,12 +99,13 @@ def edit_article(art_id):
             article.html_render = edit_form.html_render.data
             db.session.add(article)
             db.session.commit()
-            flash("Zmena uložená", "alert-success")
+            flash("Edit saved", "alert-success")
             return redirect(url_for("blog.view_article", art_id=art_id))
         else:
             for error in login_form.errors:
-                flash("{} je povinné".format(error), "alert-danger")
+                flash("{} is missing".format(error), "alert-danger")
             return redirect(url_for("admin.view_login"))
+
 
 
 
@@ -369,14 +371,14 @@ def delete_article(art_id):
 @admin.route("/shifts/", methods=["GET"])
 def view_shifts():
     page = request.args.get("page", 1, type=int)
-    paginate = Shift.query.order_by(Shift.id.asc()).paginate(page, 30, False)
+    paginate = Shift.query.order_by(Shift.id.desc()).paginate(page, 30, False)
     return render_template("mod_blog/smeny.jinja",
             shifts=paginate.items,
             paginate=paginate)
 
 
+
 @admin.route("/shifts/<int:shi_id>/", methods=['GET', 'POST'])
-@login_required1
 def submit_shift(shi_id):
     shift = Shift.query.filter_by(id=shi_id).first()
     try:
@@ -388,3 +390,48 @@ def submit_shift(shi_id):
         return redirect(url_for("admin.view_shifts"))
     except:
         return render_template("errors/500.jinja")
+
+
+
+@admin.route("/burza/", methods=["GET"])
+def view_burza():
+    page = request.args.get("page", 1, type=int)
+    paginate = Shift.query.order_by(Shift.id.desc()).paginate(page, 30, False)
+    return render_template("mod_blog/burza.jinja",
+            shifts=paginate.items,
+            paginate=paginate)
+
+
+
+
+@admin.route("/burza/<int:shi_id>/", methods=['GET', 'POST'])
+def submit_burza(shi_id):
+    shift = Shift.query.filter_by(id=shi_id).first()
+    try:
+        data1= "BURZA"
+        shift.notes = data1
+        db.session.add(shift)
+        db.session.commit()
+        flash ("dane do burza", "alert-success")
+        return redirect(url_for("admin.view_burza"))
+    except:
+        return render_template("errors/500.jinja")
+
+
+
+@admin.route("/burza/d/<int:shi_id>/", methods=['GET', 'POST'])
+def decline_burza(shi_id):
+    shift = Shift.query.filter_by(id=shi_id).first()
+    try:
+        data1= ""
+        shift.notes = data1
+        shift.username= session["ahoj"]
+        db.session.add(shift)
+        db.session.commit()
+        flash ("Zobrata smena", "alert-success")
+        return redirect(url_for("admin.view_burza"))
+    except:
+        return render_template("errors/500.jinja")
+
+
+

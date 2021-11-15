@@ -7,65 +7,67 @@
 
 {% block main %}
 <br>
+<h4>Moje smeny</h4>
 <div class="my-table">
-<div class="row justify-content-center">
-<table style='font-size:70%' class="table table-sm text-brown" >
-    <thead>
-        <tr>
-            {% if session.logged%}<th scope="col">Meno</th> {% endif %}
-            <th scope="col">Truck</th>
-            <th scope="col">Typ</th>
-            <th scope="col">Dátum</th>
-            <th scope="col">OD</th>
-            <th scope="col">DO</th>
-            <th scope="col">Potvrdenie</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% if shifts %}
-        {% for shift in shifts %}
-        {% if session.ahoj==shift.username%}
-        <tr>
-            <th>{{ shift.truck}}</td>
-            <td>{{ shift.typ}}</td>
-            <td>{{ shift.date}}</td>
-            <td>{{ shift.start_time}}</td>
-            <td>{{ shift.end_time}}</td>
-            {% if shift.notes== "OK"%}
-            <td><img alt="ok" src="/static/img/ok1.jpg" style="width:20px;height:20px; margin-left:22px"></td>
-            {% else%}
-            <td> <a style="font-size: 9px; text-decoration: none; padding:3px; margin-left:6px" href={{ url_for("admin.submit_shift", shi_id=shift.id) }} class="btn btn-primary"> POTVRDIŤ
-                </a>
-            </td>
-            {% endif %}
-        </tr>
+    <div class="row justify-content-center">
+        <table style='font-size:60%' class="table table-sm text-brown">
+            <thead>
+                <tr>
+                    {% if session.logged%}<th scope="col">Meno</th> {% endif %}
+                    <th scope="col">Truck</th>
+                    <th scope="col">Typ</th>
+                    <th scope="col">Dátum</th>
+                    <th scope="col">OD</th>
+                    <th scope="col">DO</th>
+                    <th scope="col">Účasť na smene</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if shifts %}
+                {% for shift in shifts %}
+                {% if session.ahoj==shift.username%}
+                <tr>
+                    <th>{{ shift.truck}}</td>
+                    <td>{{ shift.typ}}</td>
+                    <td>{{ shift.date}}</td>
+                    <td>{{ shift.start_time}}</td>
+                    <td>{{ shift.end_time}}</td>
+                    {% if shift.notes== "OK"%}
+                    <td><img alt="ok" src="/static/img/ok1.jpg" style="width:20px;height:20px; margin-left:22px"></td>
+                    {% else%}
+                    <td> <a style="font-size: 9px; text-decoration: none; padding:3px; margin-left:6px" href={{
+                            url_for("admin.submit_shift", shi_id=shift.id) }} class="btn btn-primary"> POTVRDIŤ
+                        </a>
+                        {% endif %}
 
-        {% elif session.logged%}
-        <tr>
-            <th>{{ shift.username}}</th>
-            <td>{{ shift.truck}}</td>
-            <td>{{ shift.typ}}</td>
-            <td>{{ shift.date}}</td>
-            <td>{{ shift.start_time}}</td>
-            <td>{{ shift.end_time}}</td>
-            {% if shift.notes== "OK"%}
-            <td><img alt="ok" src="/static/img/ok1.jpg" style="width:20px;height:20px; margin-left:20px"></td>
-            {% else%}
-            <td><img alt="ok" src="/static/img/nok1.jpg" style="width:20px;height:20px;margin-left:20px"></td>
-            {% endif %}
+                </tr>
 
-           
-            {% else%}
+                {% elif session.logged%}
+                <tr>
+                    <th>{{ shift.username}}</th>
+                    <td>{{ shift.truck}}</td>
+                    <td>{{ shift.typ}}</td>
+                    <td>{{ shift.date}}</td>
+                    <td>{{ shift.start_time}}</td>
+                    <td>{{ shift.end_time}}</td>
+                    {% if shift.notes== "OK"%}
+                    <td><img alt="ok" src="/static/img/ok1.jpg" style="width:20px;height:20px; margin-left:20px"></td>
+                    {% else%}
+                    <td><img alt="ok" src="/static/img/nok1.jpg" style="width:20px;height:20px;margin-left:20px"></td>
+                    {% endif %}
 
-            {% endif %}
-        </tr>
+                </tr>
+                {% else%}
+
+                {% endif %}
 
 
 
-        {% endfor %}
-    </tbody>
-</table>
-</div>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 
@@ -79,7 +81,7 @@
     {# add previous button #}
     {% if paginate.has_prev %}
     <li class="page-item">
-        <a class="page-link text-nude" href={{url_for("admin.view_shifts", page=paginate.prev_num)}}>Previous</a>
+        <a class="page-link text-nude" href={{url_for("admin.view_shifts", page=paginate.prev_num)}}>Predošlá</a>
     </li>
     {% endif %}
 
@@ -101,14 +103,14 @@
     {# add next button #}
     {% if paginate.has_next %}
     <li class="page-item">
-        <a class="page-link text-nude" href={{url_for("admin.view_shifts", page=paginate.next_num)}}>Next</a>
+        <a class="page-link text-nude" href={{url_for("admin.view_shifts", page=paginate.next_num)}}>Nasledujúca</a>
     </li>
     {% endif %}
 </ul>
 
 
 {% else %}
-<p> No articles </p>
+<p> Žiadne smeny </p>
 {% endif %}
 
 {% endblock %}

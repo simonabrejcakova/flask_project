@@ -7,42 +7,122 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
-     <input type="text" id="search" class="form-control" placeholder="Kľúčové slovo">
-     <input type="hidden" id="hid_search" class="form-control">
-     <div class="btn-center">
-       <button class="btn btn-primary" type="submit" id="button"
+      <input type="text" id="search" class="form-control" placeholder="Kľúčové slovo">
+      <input type="hidden" id="hid_search" class="form-control">
+      <div class="btn-center">
+        <button class="btn btn-primary" type="submit" id="button"
           onmousedown="doSearch(document.getElementById('search').value)" value="Find">Search</button>
-     </div>
+      </div>
     </div>
   </div>
 </div>
 </p>
 
 {# OBSAH #}
-<h4><a onclick="myFunction()"><u><b>OBSAH⬇︎</b></u></a></h4> 
+<h4><a onclick="myFunction()"><u><b>OBSAH⬇︎</b></u></a></h4>
 
 <div id="CONTENT">
   <ul>
-    <li><a class="text-brown" href="#navod1">1 Firemní kódex</a></li>
+    <li><a class="text-brown" href="#1">1 Firemní kódex</a></li>
     <ul>
-      <li><a class="text-brown" href="#navod11">1.1 Pracovní zásady</a></li>
+      <li><a class="text-brown" href="#11">1.1 Pracovní zásady</a></li>
     </ul>
-    <li><a class="text-brown" href="#navod2">Návod na kafe 2</a></li>
-    <li><a class="text-brown" href="#navod3">Návod na kafe 3</a></li>
+
+    <li><a class="text-brown" href="#2">2 Povinnosť prísluhy</a></li>
+    <ul>
+      <li><a class="text-brown" href="#21">2.1 Náplň práce</a></li>
+    </ul>
+    <ul>
+      <li><a class="text-brown" href="#22">2.2 Pracovný odev</a></li>
+    </ul>
+    <ul>
+      <li><a class="text-brown" href="#23">2.3 Poriadok, hygiena, dopĺňanie tovaru</a></li>
+    </ul>
+    <ul>
+      <li><a class="text-brown" href="#24">2.4 Základ, kasírka a pokladňa </a></li>
+    </ul>
+
+    <li><a class="text-brown" href="#3">3 Komunikace a prodejní dovednosti</a></li>
+    <ul>
+      <li><a class="text-brown" href="#31">3.1 Komunikace se zákazníkem</a></li>
+    </ul>
+    <ul>
+      <li><a class="text-brown" href="#32">3.2 Interní záležitosti</a></li>
+    </ul>
+
+    <li><a class="text-brown" href="#4">4 Marketing firmy</a></li>
+    <ul>
+      <li><a class="text-brown" href="#41">4.1 Prodej</a></li>
+    </ul>
+    <ul>
+      <li><a class="text-brown" href="#42">4.2 Sociální síte</a></li>
+    </ul>
+    <ul>
+      <li><a class="text-brown" href="#43">4.3 Akce</a></li>
+    </ul>
+    <ul>
+      <ul>
+        <li><a class="text-brown" href="#431">4.3.1 Dlouhodobé akce</a></li>
+      </ul>
+    </ul>
+    <ul>
+      <ul>
+        <li><a class="text-brown" href="#432">4.3.2 Jednorázové akce</a></li>
+      </ul>
+    </ul>
+    <ul>
+      <li><a class="text-brown" href="#44">4.4 Věrnostní program</a></li>
+    </ul>
+
+    <li><a class="text-brown" href="#5">5 Druhy nabízených káv</a></li>
+    <ul>
+      <li><a class="text-brown" href="#51">5.1 Espresso (S)</a></li>
+    </ul>
+    <ul>
+      <li><a class="text-brown" href="#52">5.2 Ristretto (S)</a></li>
+    </ul>
+    <ul>
+      <li><a class="text-brown" href="#53">5.3 Espresso Lungo (M)</a></li>
+    </ul>
+    <ul>
+      <li><a class="text-brown" href="#54">5.4 Espresso Doppio (S)</a></li>
+    </ul>
+    <ul>
+      <li><a class="text-brown" href="#55">5.5 Espresso Macchiato (S)</a></li>
+    </ul>
+    <ul>
+      <li><a class="text-brown" href="#56">5.6 Cappuccino (M)</a></li>
+    </ul>
+    <ul>
+      <li><a class="text-brown" href="#57">5.7 Cappuccinno Doppio (M)</a></li>
+    </ul>
+    <ul>
+      <li><a class="text-brown" href="#57">5.8 Caffe latte (L,XL)</a></li>
+    </ul>
+
+    <li><a class="text-brown" href="#6">6 Pokladní systém Storyous </a></li>
+    <ul>
+      <li><a class="text-brown" href="#61">6.1 Hardware</a></li>
+    </ul>
+    <ul>
+      <li><a class="text-brown" href="#61">6.2 Software</a></li>
+    </ul>
+
+    <li><a class="text-brown" href="#7">7 Platební terminál</a></li>
   </ul>
 </div>
 
 
 {# MANUAL #}
-<h5 class="text-brown" id="navod1">1 Firemní kódex</h5>
+<h5 class="text-brown" id="1">1 Firemní kódex</h5>
 <p>Firemní kodex je jedním ze základních předpisů a cílem tohoto kodexu je
   deklarovat vůli pracovníků dodržovat tuto normu chování při jednání se zákazníky, vůči okolí a mezi
   sebou navzájem. Firemní kodex je morálním závazkem a součást pro
   (obecně pracovníci). Všichni pracovníci jsou oprávnění požadovat dodržování tohoto firemního kodexu od
   ostatních. Jakékoliv jeho porušení je považováno za rušení pracovní kázně.</p>
- 
 
-<h6 class="text-brown" id=navod11>1.1 Pracovni zásady</h6>
+
+<h6 class="text-brown" id="11">1.1 Pracovni zásady</h6>
 <p> ◉ Každý pracovník nastupuje do práce včas a striktně dodržuje pracovní dobu a úvazek.</p>
 <p> ◉ Prodáva sa jenom na určených mistech...
 </p>
@@ -57,24 +137,112 @@
   pracovník v čistotě za současného dodržování .</p>
 <p> ◉ Každý pracovník si musí být vědom, že svým chováním a osobním vystu.</p>
 
-
-<h5 class="text-brown" id="navod2">2 Meno</h5>
-<p>Firemní kodex je jedním ze základních předpisů a cílem tohoto kodexu je
-  deklarovat vůli pracovníků dodržovat tuto normu chování při jednání se zákazníky, vůči okolí a mezi
-  sebou navzájem. Firemní kodex je morálním závazkem a součást pro
-  (obecně pracovníci). Všichni pracovníci jsou oprávnění požadovat dodržování tohoto firemního kodexu od
-  ostatních. Jakékoliv jeho porušení je považováno za rušení pracovní kázně.</p>
-
-<h5 class="text-brown" id="navod3">3 Latte</h5>
-<p>Firemní kodex je jedním ze základních předpisů a cílem tohoto kodexu je
-  deklarovat vůli pracovníků dodržovat tuto normu chování při jednání se zákazníky, vůči okolí a mezi
-  sebou navzájem. Firemní kodex je morálním závazkem a součást pro
-  (obecně pracovníci). Všichni pracovníci jsou oprávnění požadovat dodržování tohoto firemního kodexu od
-  ostatních. Jakékoliv jeho porušení je považováno za rušení pracovní kázně.</p>
-  <img src="https://i0.wp.com/thecoffeedesigner.com/wp-content/uploads/2021/01/pexels-di-bella-coffee-1233535-3.jpg?resize=1536%2C1163&ssl=1" 
-  width="300" height="200" alt="W3Schools.com">
+<br>
+<h5 class="text-brown" id="2">2 Povinnosti prísluhy</h5>
+<p></p>
 
 
+<h6 class="text-brown" id="21">2.1 Náplň práce</h6>
+<p>◉Komunikace se zákazníky, objednávání a předávání objednávek baristovi, práce s pokladnou, tabletem,
+  terminálem a příjem plateb od zákazníka.</p>
+<p> ◉Vydávaní nápojú </p>
+<p> ◉ Udržovat dostatek doplňkového sortimentu a pořádek v přední části stánku.
+</p>
+<p> ◉ Komunikace s baristou a výpomoc, pokud potřebuje.
+</p>
+
+<h6 class="text-brown" id="22">2.2 Pracovný odev</h6>
+<p>◉ Firemní barvy: černá, hnědá, bílá, šedá. </p>
+
+<h6 class="text-brown" id="23">2.3 Poriadok, hygiena, dopĺňanie tovaru</h6>
+<p>◉ Potrebné mať u seba POTRAVINÁRSKY PREUKAZ.</p>
+
+<h6 class="text-brown" id="24">2.4</h6>
+<p>◉ Na každé směně musíme vytvořit základ pro další směnu.</p>
+
+
+<br>
+<h5 class="text-brown" id="3">3 Komunikace a prodejní dovednosti</h5>
+
+<h6 class="text-brown" id="31">3.1 Komunikace se zákazníkem</h6>
+<p>◉ Zákazník je vždy na prvním místě. </p>
+<p>◉ Buďte aktivní směrem k zákazníkovi. </p>
+<p>◉ Používejte správné kávové názvosloví (ristretto, espresso). </p>
+<p>◉ případě, že je na stánku k prodeji také doplňkový sortiment ponúkajte ho. </p>
+
+<h6 class="text-brown" id="31">3.2 Interní záležitosti</h6>
+
+
+<br>
+<h5 class="text-brown" id="4">4 Marketing firmy</h5>
+<h6 class="text-brown" id="41">4.1 Prodej</h6>
+<h6 class="text-brown" id="42">4.2 Sociální síte</h6>
+<h6 class="text-brown" id="43">4.3 Akce</h6>
+<p class="text-brown" id="431">4.3.1 Dlouhodobé akce </p>
+<p class="text-brown" id="432">4.3.2 Jednorázové akce</p>
+<h6 class="text-brown" id="44">4.4 Věrnostní program</h6>
+
+<br>
+<h5 class="text-brown" id="5">5 Druhy nabízených káv</h5>
+<h6 class="text-brown" id="51">5.1 Espresso</h6>
+<p>"Espresso je nápoj o objemu 30 ±5 ml s doporučeným časem extrakce 20 až 30 sekund vyrobený pod tlakem přibližně 9
+  barů.“</p>
+<p><img src="https://www.piccoloneexistuje.cz/userfiles/napoje_detail/espresso_v3.png" width="200" height="100"></p>
+<h6 class="text-brown" id="52">5.2 Ristretto (S)</h6>
+<p>Ristretto je nápoj pocházející z jižní Itálie, ze Sicílie. Je velice podobné espressu, ale s tím rozdílem, že jeho
+  objem je okolo 20 ml.
+  K pokrácení espressa se uchylují místní milovníci kávy kvůli vysokým teplotám v tomto kraji,
+  kdy bylo potřeba ještě zmenšit nápoj, aby při pití nedocházelo ke zvyšování teploty organismu</p>
+<p><img src="https://www.piccoloneexistuje.cz/userfiles/napoje_detail/ristretto_v2.png" width="200" height="100"></p>
+<h6 class="text-brown" id="53">5.3 Espresso Lungo (M)</h6>
+<p>Lungo znamená italsky dlouhý, vodový, zředěný a od toho se odvíjí i povaha nápoje z páky espresso kávovaru.
+  Množství kávy v košíku zůstává stejné jako u espressa, ale výsledné množství nápoje je dvojnásobné.
+  U jedné dávky je to z 8 g kávy 60 ml nápoje, ze dvou dávek kávy je to pak z 16 g výsledných 120 ml nápoje. </p>
+<h6 class="text-brown" id="55">5.5 Espresso Macchiato (S)</h6>
+<p>Italský odvozený nápoj espresso macchiato je plně poplatný svému názvu. Slovo macchiato totiž znamená skvrnitý nebo
+  tečkovaný.
+  Dle klasické školy se jedná o espresso s kapkou mléčné pěny vloženou do cremy lžičkou.
+  Moderní macchiato vypadá jako miniaturní cappuccino — espresso je ve svém 80 ml šálku doplněno až po okraj mikropěnou
+  a může být ozdobeno latte artem</p>
+<p><img src="https://www.piccoloneexistuje.cz/userfiles/napoje_detail/ristretto_v2.png" width="200" height="100"></p>
+<h6 class="text-brown" id="56">5.6 Cappuccinno (M)</h6>
+<p>Nápoj o celkovém objemu 150 až 180 ml, jehož základem je 30 ml espressa a teplé mléko. V původní italské receptuře
+  obsahuje 2 cm vysokou hutnou pěnu na horkém mléce. Novější variantou je tzv. seattle style cappuccino, kde je místo
+  husté pěny na povrchu tzv. mikropěna. Ta je více provázaná s mlékem a po napití vytvoří příjemný, až sametový pocit v
+  ústech.
+  Nejčastější chybou u mléčných nápojů je použití jiného extraktu než správného 30ml espressa. Další chybou je zbytečné
+  přehřívání mléka nad 65 °C při jeho šlehání, kdy se jednak mění struktura bílkovin v mléce a s ní i chuť, ale také je
+  již nápoj moc horký.
+  Pamatujte, správně připraveným nápojem na bázi espressa se nelze při napití popálit!</p>
+<p><img src="https://www.piccoloneexistuje.cz/userfiles/napoje_detail/cappuccino_moderni_v2.png" width="200"
+    height="100"></p>
+<h6 class="text-brown" id="57">5.7 Cappuccinno Doppio (M)</h6>
+<p>Poslední dobou roste poptávka po něčem trochu silnějším, někomu jedno espresso v mléčném nápoji prostě nestačí.
+  Flat white se stal velmi populárním v Austrálii a úspěšně se domestikoval už po celém světě.
+  Připravuje se do skleničky nebo cappuccinového šálku ze dvou shotů espressa (doppio) a dolévá se teplým mlékem s
+  pěnou,
+  která typicky tvoří cca 1 cm vrstvu, může být ozdobená latte artem.</p>
+<h6 class="text-brown" id="58">5.8 Caffe latte (L,XL)</h6>
+<p>Caffè latte je nápoj o objemu více než 250 ml. Rozdíl oproti cappuccinu je v celkovém objemu a také v menším podílu
+  pěny. Caffè latte se připravuje do šálku s ouškem. V Itálii vznikla jako káva pro děti a jedná se o jeden z méně
+  oblíbených nápojů.
+  Varianta nápoje caffè latte je latte macchiato, které se připravuje do sklenice tím způsobem, že se nejdříve napění
+  mléko do podoby mikropěny, které se nalije do sklenice. Zde se během půl minuty mléčná pěna oddělí od mléka a utvoří
+  na povrchu pevnější vrstvu. Espresso se nalévá až jako poslední a vytváří na povrchu nápoje typickou skvrnu od kávy.
+  Je časté, že se vlitím kávy utvoří tři vrstvy, které jsou bonusem, nikoli však nutností.</p>
+<p><img src="https://www.piccoloneexistuje.cz/userfiles/napoje_detail/caffe_latte_v2.png" width="200" height="100"></p>
+
+
+
+<br>
+<h5 class="text-brown" id="6">6 Pokladní systém Storoyous</h5>
+<h6 class="text-brown" id="61">6.1 Hardware</h6>
+<h6 class="text-brown" id="62">6.2 Software</h6>
+
+
+
+<br>
+<h5 class="text-brown" id="7">7 Platební terminál</h5>
 
 
 

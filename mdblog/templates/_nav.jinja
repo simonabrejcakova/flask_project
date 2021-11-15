@@ -15,7 +15,8 @@
 
 
       {% if session.ahoj%}
-      <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_shifts") }}>Moje Smeny</a></li>
+      <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_shifts") }}>Smeny</a></li>
+      <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_burza") }}>Burza</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_locations") }}>Lokácie</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_articles") }}>FAQ</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_manuals") }}>Manuále</a></li>
@@ -64,6 +65,7 @@
 
       {% if session.logged%}
       <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_shifts") }}>Smeny</a></li>
+      <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_burza") }}>Burza</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_locations") }}>Lokácie</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_articles") }}>FAQ</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_manuals") }}>Manuále</a></li>
