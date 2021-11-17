@@ -59,7 +59,7 @@ def add_article():
                 html_render = add_form.html_render.data)
         db.session.add(new_article)
         db.session.commit()
-        flash("Article was saved", "alert-success")
+        flash("Nový príspevok uložený", "alert-success")
 
         article_url = url_for("blog.view_article", art_id = new_article.id)
         article_url = request.url_root + article_url[1:]
@@ -70,7 +70,7 @@ def add_article():
         return redirect(url_for("blog.view_articles"))
     else:
         for error in add_form.errors:
-            flash("{} is required".format(error), "alert-danger")
+            flash("{} je povinné".format(error), "alert-danger")
         return render_template("mod_admin/article_editor.jinja", form=add_form)
 
 
@@ -99,11 +99,11 @@ def edit_article(art_id):
             article.html_render = edit_form.html_render.data
             db.session.add(article)
             db.session.commit()
-            flash("Edit saved", "alert-success")
+            flash("Zmena uložená", "alert-success")
             return redirect(url_for("blog.view_article", art_id=art_id))
         else:
             for error in login_form.errors:
-                flash("{} is missing".format(error), "alert-danger")
+                flash("{} je povinné".format(error), "alert-danger")
             return redirect(url_for("admin.view_login"))
 
 
@@ -288,7 +288,7 @@ def add_location():
                 html_render = add_form.html_render.data)
         db.session.add(new_location)
         db.session.commit()
-        flash("Lokácia uložená", "alert-success")
+        flash("Nová lokácia pridaná", "alert-success")
 
 
         return redirect(url_for("blog.view_locations"))
@@ -412,7 +412,7 @@ def submit_burza(shi_id):
         shift.notes = data1
         db.session.add(shift)
         db.session.commit()
-        flash ("dane do burza", "alert-success")
+        flash ("Ponúknuté do burzy smien", "alert-success")
         return redirect(url_for("admin.view_burza"))
     except:
         return render_template("errors/500.jinja")
@@ -428,7 +428,7 @@ def decline_burza(shi_id):
         shift.username= session["ahoj"]
         db.session.add(shift)
         db.session.commit()
-        flash ("Zobrata smena", "alert-success")
+        flash ("Zobratá smena", "alert-success")
         return redirect(url_for("admin.view_burza"))
     except:
         return render_template("errors/500.jinja")
