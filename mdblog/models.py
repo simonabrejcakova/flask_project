@@ -67,3 +67,10 @@ class Message(db.Model):
     title = db.Column(db.String)
     content = db.Column(db.String)
     html_render = db.Column(db.String)
+
+class Document(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username= db.Column(db.String)
+    img = db.Column(db.Text, unique=True, nullable=False)
+    name = db.Column(db.Text, nullable=False)
+    mimetype = db.Column(db.Text, nullable=False)

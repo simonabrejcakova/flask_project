@@ -5,6 +5,8 @@ from flask import redirect
 from flask import url_for
 from flask import session
 from flask import flash
+from flask import Response
+from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash
 
 from mdblog.models import Shifts, db
@@ -12,6 +14,7 @@ from mdblog.models import Location
 from mdblog.models import Article
 from mdblog.models import User
 from mdblog.models import Shift
+from mdblog.models import Document
 
 from .forms import ArticleForm
 from .forms import LocationForm
@@ -435,3 +438,40 @@ def decline_burza(shi_id):
 
 
 
+
+
+@admin.route('/upload', methods=['POST'])
+def upload():
+    pic = request.files['pic']
+    if not pic:
+        return 'No pic uploaded!', 400
+
+    filename = secure_filename(pic.filename)
+    mimetype = pic.mimetype
+    username= session["logged"]
+    if not filename or not mimetype:
+        return 'Bad upload!', 400
+
+    document = Document(username=username, img=pic.read(), name=filename, mimetype=mimetype)
+    db.session.add(document)
+    db.session.commit()
+
+    return 'Img Uploaded!', 200
+
+
+@admin.route("/document/<int:doc_id>/")
+def get_img(doc_id):
+    document = Document.query.filter_by(id=doc_id).first()
+    if document:
+        return Response(document.img, mimetype=document.mimetype)
+    return render_template("mod_blog/article_not_found.jinja", doc_id=doc_id)
+
+
+@admin.route("/document/", methods=["GET"])
+def view_document():
+    page = request.args.get("page", 1, type=int)
+    paginate = Document.query.order_by(Document.id.desc()).paginate(page, 5, False)
+    return render_template("mod_blog/dokumenty.jinja",
+            documents=paginate.items,
+            paginate=paginate)
+   
