@@ -74,3 +74,13 @@ class Document(db.Model):
     img = db.Column(db.Text, unique=True, nullable=False)
     name = db.Column(db.Text, nullable=False)
     mimetype = db.Column(db.Text, nullable=False)
+
+class Covid(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username= db.Column(db.String)
+    img = db.Column(db.Text, unique=True, nullable=False)
+    name = db.Column(db.Text, nullable=False)
+    mimetype = db.Column(db.Text, nullable=False)
+    typ=db.Column(db.String)
+    date= db.Column(db.String)
+

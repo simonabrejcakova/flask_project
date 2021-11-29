@@ -8,13 +8,16 @@
         <article class="media pt-3">
             <div class="media-body ">
                 <h3> Nastavenia </h3>
+                <p><a class="text-nude" href={{ url_for("admin.view_document") }}>Potravinársky preukaz</a></p>
                 <p><a class="text-nude" href={{ url_for("admin.view_article") }}>Editovať príspevok</a></p>
                 <p><a class="text-nude" href={{ url_for("admin.view_location") }}>Editovať lokácie</a></p>
                 <p><a class="text-nude" href={{ url_for("admin.view_google_sheets") }}>Technická podpora
                         výsledky</a></p>
                 <p><a class="text-nude" href={{ url_for("admin.new_user") }}>Pridať nového používateľa</a></p>
                 <p><a class="text-nude" href={{ url_for("admin.view_change_password") }}>Zmena hesla</a></p>
-                
+                <form action="{{url_for("admin.logout_user")}}" method="post">
+                    <button type="submit" class="btn btn-logout" href={{ url_for("admin.view_admin") }}>Odhlásiť</a>
+                </form>                
             </div>
         </article>
     </div>

@@ -15,6 +15,7 @@
 
 
       {% if session.ahoj%}
+      <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_covid") }}>Príspevky</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_articles") }}>Príspevky</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_shifts") }}>Smeny</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_burza") }}>Burza</a></li>
@@ -31,17 +32,10 @@
       </li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_contact") }}>Kontakty</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_calendar") }}>Kalendár</a></li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          {{session['ahoj']}}</a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="nav-item"></li><a class="nav-link" href={{ url_for("admin.view_change_password_ahoj") }}>Zmena hesla</a></li>
-          <li><a class="nav-item">
-            <form action="{{url_for("admin.logout_user_ahoj")}}" method="post">
-            <button type="submit" class="btn btn-logout" href={{ url_for("admin.view_admin") }}>Odhlásiť</a>
-            </form></a></li>
-        </ul>
-      </li>
+      <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_uzivatel") }}><u>{{session['ahoj']}}</u></a></li>
+      
+      
+      
      
 
      
@@ -64,7 +58,7 @@
 
 
       {% if session.logged%}
-      <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_document") }}>Príspevky</a></li>
+      <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_covid") }}>Príspevky</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_articles") }}>Príspevky</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_shifts") }}>Smeny</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_burza") }}>Burza</a></li>
@@ -80,13 +74,7 @@
       </li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_calendar") }}>Kalendár</a></li>
       <li class="nav-item"><a class="nav-link" href={{ url_for("blog.view_contact") }}>Kontakty</a></li>
-      <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_admin") }}>admin</a></li>
-
-      <li class="nav-item">
-        <form action="{{url_for("admin.logout_user")}}" method="post">
-            <button type="submit" class="btn btn-logout" href={{ url_for("admin.view_admin") }}>Odhlásiť</a>
-        </form>
-      </li>
+      <li class="nav-item"><a class="nav-link" href={{ url_for("admin.view_admin") }}><u>admin</u></a></li>
       {% endif %}
 
 

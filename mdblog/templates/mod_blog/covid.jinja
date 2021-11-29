@@ -1,17 +1,25 @@
 {% extends "_main.jinja" %}
 
-{% block title %} Potravinársky preukaz {% endblock %}
+{% block title %}  preukaz {% endblock %}
 
 
 {% block main %}
 
 <br>
-<h4>Potravinársky preukaz</h4>
+<h4> COVID </h4>
+
 
 
 {% if session.ahoj%}
 
-<form action="http://192.168.0.102:5000/admin/upload" enctype="multipart/form-data" method="POST">
+<form action="http://192.168.0.102:5000/admin/uploadcovid" enctype="multipart/form-data" method="POST">
+    <select name="typ">
+        <option value="očkovanie">očkovanie</option>
+        <option value="prekonanie">Prekonanie</option>
+        <option value="agtest">Ag-test</option>
+        <option value="pcrtest">Fiat</option>
+    </select>
+    <input type="date" name="date" />
     <input type="file" name="pic" />
     <button class="btn btn-primary" input type="submit" value="Nahrať dokument">Nahrať dokument</button>
 </form>
@@ -28,15 +36,19 @@
                 <tr>
                     <th scope="col">Meno</th>
                     <th scope="col">Zobraziť</th>
+                    <th scope="col">typ</th>
+                    <th scope="col">date</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                {% if documents %}
-                {% for document in documents %}
+                {% if covids %}
+                {% for covid in covids %}
                 <tr>
-                    <th>{{ document.username}}</th>
-                    <th><a class="text-brown" href={{ url_for("admin.get_img", doc_id=document.id) }}>📄</a></th>
+                    <th>{{ covid.username}}</th>
+                    <th><a class="text-brown" href={{ url_for("admin.get_imgcovid", cov_id=covid.id) }}>📄</a></th>
+                    <th>{{ covid.typ}}</th>
+                    <th>{{ covid.date}}</th>
                     <th><a style="font-size: 9px; text-decoration: none; padding:3px; margin-left:0px" class="btn btn-danger">Vymazať</a></th>
                 </tr>
                 {% endfor %}
@@ -60,16 +72,22 @@
             <thead>
                 <tr>
                     <th scope="col">Zobraziť</th>
+                    <th scope="col">Typ</th>
+                    <th scope="col">Dátum</th>
+                    <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                {% if documents %}
-                {% for document in documents %}
-                {% if session.ahoj==document.username%}
+                {% if covids %}
+                {% for covid in covids %}
+                {% if session.ahoj==covid.username%}
                 <tr>
-                    <th><a class="text-brown" href={{ url_for("admin.get_img", doc_id=document.id) }}>📄</a></th>
+                    <th><a class="text-brown" href={{ url_for("admin.get_imgcovid", cov_id=covid.id) }}>📄</a></th>
+                    <th>{{ covid.typ}}</th>
+                    <th>{{ covid.date}}</th>
                     <th><a style="font-size: 9px; text-decoration: none; padding:3px; margin-left:0px" class="btn btn-danger">Vymazať</a></th>
+                    
                 </tr>
                 {% else%}
 
@@ -92,7 +110,7 @@
     {# add previous button #}
     {% if paginate.has_prev %}
     <li class="page-item">
-        <a class="page-link text-nude" href={{url_for("admin.view_document", page=paginate.prev_num)}}>Predošlá</a>
+        <a class="page-link text-nude" href={{url_for("admin.view_covid", page=paginate.prev_num)}}>Predošlá</a>
     </li>
     {% endif %}
 
@@ -101,7 +119,7 @@
     {%- for page in paginate.iter_pages() %}
     {% if page %}
     {% if page != paginate.page %}
-    <li class="page-item"> <a class="page-link text-nude" href={{ url_for("admin.view_document", page=page)
+    <li class="page-item"> <a class="page-link text-nude" href={{ url_for("admin.view_covid", page=page)
             }}>{{page}}</a></li>
     {% else %}
     <li class="page-item disabled"><a class="page-link">{{ page }}</a></li>
@@ -114,7 +132,7 @@
     {# add next button #}
     {% if paginate.has_next %}
     <li class="page-item">
-        <a class="page-link text-nude" href={{url_for("admin.view_document", page=paginate.next_num)}}>Nasledujúca</a>
+        <a class="page-link text-nude" href={{url_for("admin.view_covid", page=paginate.next_num)}}>Nasledujúca</a>
     </li>
     {% endif %}
 </ul>

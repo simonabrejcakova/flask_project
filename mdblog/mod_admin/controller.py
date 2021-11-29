@@ -6,6 +6,7 @@ from flask import url_for
 from flask import session
 from flask import flash
 from flask import Response
+from datetime import date, datetime
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash
 
@@ -15,6 +16,7 @@ from mdblog.models import Article
 from mdblog.models import User
 from mdblog.models import Shift
 from mdblog.models import Document
+from mdblog.models import Covid
 
 from .forms import ArticleForm
 from .forms import LocationForm
@@ -267,7 +269,12 @@ def view_location():
 @login_required
 def view_google_sheets():
     return render_template("mod_admin/google_sheets.jinja")
+
     
+@admin.route("/profil/")
+@login_required1
+def view_uzivatel():
+    return render_template("mod_blog/uzivatel.jinja")
 
 
 
@@ -444,19 +451,21 @@ def decline_burza(shi_id):
 def upload():
     pic = request.files['pic']
     if not pic:
-        return 'No pic uploaded!', 400
+        flash ("Nie je vybratý dokument", "alert-danger")
+        return redirect(url_for(".view_document"))
 
     filename = secure_filename(pic.filename)
     mimetype = pic.mimetype
-    username= session["logged"]
+    username= session["ahoj"]
     if not filename or not mimetype:
-        return 'Bad upload!', 400
+        flash ("Nesprávny typ dokumentu", "alert-danger")
+        return redirect(url_for(".view_document"))
 
     document = Document(username=username, img=pic.read(), name=filename, mimetype=mimetype)
     db.session.add(document)
     db.session.commit()
-
-    return 'Img Uploaded!', 200
+    flash ("Potravinársky preukaz nahratý", "alert-success")
+    return redirect(url_for(".view_document"))
 
 
 @admin.route("/document/<int:doc_id>/")
@@ -470,8 +479,63 @@ def get_img(doc_id):
 @admin.route("/document/", methods=["GET"])
 def view_document():
     page = request.args.get("page", 1, type=int)
-    paginate = Document.query.order_by(Document.id.desc()).paginate(page, 5, False)
+    paginate = Document.query.order_by(Document.id.desc()).paginate(page, 30, False)
     return render_template("mod_blog/dokumenty.jinja",
             documents=paginate.items,
             paginate=paginate)
+
+
+
+@admin.route('/uploadcovid', methods=['POST'])
+def uploadcovid():
+    pic = request.files['pic']
+    typ = request.form['typ']
+    date= request.form['date']
+    if not pic:
+        flash ("Nie je vybratý dokument", "alert-danger")
+        return redirect(url_for(".view_covid"))
+
+    filename = secure_filename(pic.filename)
+    mimetype = pic.mimetype
+    username= session["ahoj"]
+    typ= typ
+    date=datetime.strptime(date, '%Y-%m-%d')
+    if not filename or not mimetype:
+        flash ("Nesprávny typ dokumentu", "alert-danger")
+        return redirect(url_for(".view_covid"))
+
+    covid = Covid(username=username, img=pic.read(), name=filename, mimetype=mimetype, typ=typ, date=date )
+    db.session.add(covid)
+    db.session.commit()
+    flash ("Preukaz nahratý", "alert-success")
+    return redirect(url_for(".view_covid"))
+
+
+@admin.route("/covid/<int:cov_id>/")
+def get_imgcovid(cov_id):
+    covid = Covid.query.filter_by(id=cov_id).first()
+    if covid:
+        return Response(covid.img, mimetype=covid.mimetype)
+    return render_template("mod_blog/article_not_found.jinja", cov_id=cov_id)
+
+
+@admin.route("/covid/", methods=["GET"])
+def view_covid():
+    page = request.args.get("page", 1, type=int)
+    paginate = Covid.query.order_by(Covid.id.desc()).paginate(page, 30, False)
+    return render_template("mod_blog/covid.jinja",
+            covids=paginate.items,
+            paginate=paginate)
+
+
+
+
+
+
+
+
+
+
+
+
    
